@@ -1,0 +1,25 @@
+mtn on créé la gestion de base de donnée. 
+
+il en faut une : pour charon.
+				 pour chaque interface. 
+				 pour les profils 
+				 pour hulbert --> avec toute ses connaissances definisable (non calculable exemple : Prenoms_Profile_# = Romaric)
+
+
+historique --> texte : charon --> action lancer par charon + le temps global + erreur + reponse
+					   interface --> action faite en interne sur l'interface 
+					   fonction --> temps d'execution + reponse + erreur + quand
+					   hublert --> quel ordinateur utilise charon et où 	
+
+
+hulbert lance charon qui lance une interface ?
+plusieur charon tourne en même temps ? (pour les interfaces-->commande, pour hulbert-->interface)
+
+initialisation des base de donnée. par une fonction. --> attribution (base_de donné, cles , valeur, niveau de confidentialiter)
+automatisable sur des fonction de routine linux. 
+
+
+
+donc les verification argument :
+
+*# = valeur optionel
