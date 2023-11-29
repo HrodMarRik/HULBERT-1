@@ -1,46 +1,45 @@
+mise a jour bin :
 
-fonction obligatoire : hulbert
+pour chaque ticket 
 
-	géré l'arboresence (qui,quoi,ou)
-	géré mes base de donné : avec lecture transformation ecriture 
+lecture du --help --> possiblement utile 
 
-		- hulbert lis une instance d'une base de donnée a chaque fin de fonction
-		- chaque fonction peut ou pas ecrire dans la base lue de hulbert(code de type protocole)
-		- charon sauvegarde les donnée dans le dico et gère ses erreurs 
+si inutile --> internet 
 
+si inutile lancement à vide dans environement sans risque 
 
-	analyse grammaire(liste) = lecture plus logique 
-	enregistrement grammaire(liste) = lecture logique ecriture 
-	changement grammaire[id,liste] lecture logique ecriture
-	création réponse (reponse) logique ecriture 
+si inutile ticket + message d'erreur
 
+si l'un est utile : 
 
+action = 
 
+argument demander = 
 
-fonction obligatoire : charon 
+noms = 
 
-fonction obligatoire : visuel
-	lecture du doc des preferences et application de la préférence demander attention a mettre une ID sur les frames et mettre la même sur les widget assossier 
-	lecture de la memoire et appliquation
-	création de la frame de retour écrite. 
+en cas de manque d'information = demande utilisateur 
 
+exemple : 
 
+mkdir : 
 
-TDL :
+Utilisation : mkdir : [option]... repertoire... 
 
-	- charon : 
-		- debut instance protocole
-		- lancement de la fonction sans argument : la fonction retourne les argument demander. 
-		- lancement de la recherche d'argument : lance la fonction ou une recherche. 
-		- enregistrement de la reponse / erreur dans le dico 
-		- nouvelle instance protocole. 
+definition : créé le ou les RÉPERTOIRE s'ils n'existe pas {
+	
+	créé = verbe : lien
+	le ou les = preobjet singulier ou pluriel (ou est important)
+	RÉPERTOIRE = objet : fichier
+	s' = condition
+	ils = sujet postObjet = Objet 
+	n'existe pas = verbe existe + negation 
 
-		secondaire : 
-			- enregistrement evolutif : peut passer d'une liste a un dico tout seul. 
-			- gestion d'erreur : de la fonction avant et après le lancement. et de charon. 
+	créérepertoire(s) si repertoire existe pas
+}
 
-	- 0.py = Gestion Protocole
-		- si pas d'argument : renvoie les arguments possible 
-		- lecture protocole
-		- ajout protocole (apres qui)
-		- suppr protocole 
+option : 
+	-m 
+	-p 
+	-v
+	
