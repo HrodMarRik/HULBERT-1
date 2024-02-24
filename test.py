@@ -18,10 +18,8 @@ lignes = sortie.splitlines()
 for line in lignes:
 	line = line.lstrip()
 	if any(line.startswith(mot) for mot in mots_utilisation):
-		print(line)
 		utilisation += [line]
 	elif any(line.startswith(mot) for mot in mots_option):
-		print(line)
 		option +=  [line]
 	else:
 		definition += [line]
@@ -35,16 +33,14 @@ if erreurs:
 
 # Utilisation
 for line in utilisation:
-	print(line+)
-
+	print(line)
+print("\n")
 # argument 
-
 for line in option:
 	print(line)
 
-
+print("\n")
 # definition
-
 for line in definition:
 	print(line)
 

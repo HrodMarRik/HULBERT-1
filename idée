@@ -1,45 +1,92 @@
-mise a jour bin :
+PLAN MAIN.py: 
 
-pour chaque ticket 
+	BDD : enregistrement + lecutre de donnée
+		seed : {
+			protocole : [analyse_sys,GUI,Ticket,MAJ,Back]
+			BACK : {
+				seconde : [fonction/protocole]
+				minute : [fonction/protocole]
+				heure : [fonction/protocole]
+				jours : [fonction/protocole]
+				semaine : [fonction/protocole]
+				mois : [fonction/protocole]
+				}
+			arbo : {
 
-lecture du --help --> possiblement utile 
+			}
+		}
 
-si inutile --> internet 
+	BACK : (mise a jour de donnée)
+		lance les protocole : seconde, minute, heure, jours, semaine, mois
 
-si inutile lancement à vide dans environement sans risque 
+	main : utilisation de donnée
 
-si inutile ticket + message d'erreur
+		lancement du seed.protocole
 
-si l'un est utile : 
+		regarde ce qui retourne du seed.protocole
 
-action = 
+		enregistre
 
-argument demander = 
 
-noms = 
+TO DO : 
 
-en cas de manque d'information = demande utilisateur 
+	FONCTION :
+		
+		get_active_app
+		CHARON()
 
-exemple : 
 
-mkdir : 
+	PROTOCOLE : 
+		
+		analyse reseau
+		creation environnement
+		lecture de page web
+		comprehension verbale. 
+		communication. 
+		utilisation des bin
+		rangement BDD
+		creer Ticket
+		creer Profil
+		sauvergarde interface
+		creation protocole
 
-Utilisation : mkdir : [option]... repertoire... 
 
-definition : créé le ou les RÉPERTOIRE s'ils n'existe pas {
-	
-	créé = verbe : lien
-	le ou les = preobjet singulier ou pluriel (ou est important)
-	RÉPERTOIRE = objet : fichier
-	s' = condition
-	ils = sujet postObjet = Objet 
-	n'existe pas = verbe existe + negation 
+	SECONDE : 
 
-	créérepertoire(s) si repertoire existe pas
-}
+	MINUTE : 
 
-option : 
-	-m 
-	-p 
-	-v
-	
+	HEURE : 
+
+	SEMAINE : 
+
+	MOIS : 
+
+
+
+PLAN Charon : 
+
+	prend : un protocole/fonction/ du français
+
+	fonction --> { fonction : [argvs] }
+
+	protocole --> { protocole : { fonctions : [argvs] } }
+
+	du français --> ("txt")
+
+
+	BDD : enregistrement + lecture de donnée
+
+	main :
+
+		if fonction :
+			subprocess
+
+		elif protocole :
+			boucle while fonction
+				subprocess
+
+		elif français :
+			protocole_texte
+
+		else :
+			erreur
