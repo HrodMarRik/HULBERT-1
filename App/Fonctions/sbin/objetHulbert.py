@@ -12,7 +12,7 @@ sys.path.insert(0, parent_dir)
 
 import App.Fonctions.bin.loggerConfig
 from App.Fonctions.bin import read, write
-from App.Fonctions;sbin import objetInterface
+from App.Fonctions.sbin import objetInterface as UI
 
 info = "OUVERTURE de : " + __name__
 logging.info(info)
@@ -21,6 +21,7 @@ class Hulbert:
     def __init__(self, env):
         logging.info("DEBUT Creation Hulbert")
 
+        self.env = env
         self.icon_image = self.create_image_from_file(env)
         self.icon = None
         self.is_running = False
@@ -51,8 +52,9 @@ class Hulbert:
             logging.info("L'interface est déjà en cours")
 
     def start_new_app(self):
-        new_app_window = App(self)
-        new_app_window.run()
+        new_app_window = UI.interface(self.env)
+        # new_app_window.run()
+        logging.info("FERMETURE de l'interface")
         self.is_running = False
 
     def quit_app(self, icon, item):
