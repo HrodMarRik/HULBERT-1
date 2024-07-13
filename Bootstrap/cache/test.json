@@ -1,0 +1,16 @@
+{
+    "INFO systeme": "{\n    \"OS Info\": {\n        \"System\": \"Linux\",\n        \"Node\": \"Hulbert\",\n        \"Release\": \"6.5.0-41-generic\",\n        \"Version\": \"#41~22.04.2-Ubuntu SMP PREEMPT_DYNAMIC Mon Jun  3 11:32:55 UTC 2\",\n        \"Machine\": \"x86_64\",\n        \"Processor\": \"x86_64\"\n    },\n    \"Battery Info\": {\n        \"Percentage\": [\n            \"8.47\",\n            \"%\"\n        ],\n        \"Plugged In\": false,\n        \"Time Left\": \"0h 30m\"\n    },\n    \"Machine Capabilities\": {\n        \"CPU Count\": 8,\n        \"CPU Frequency\": {\n            \"Current\": [\n                \"1472.15\",\n                \"Mhz\"\n            ],\n            \"Min\": [\n                \"400.00\",\n                \"Mhz\"\n            ],\n            \"Max\": [\n                \"3850.00\",\n                \"Mhz\"\n            ]\n        },\n        \"Total Memory\": [\n            \"7.44\",\n            \"GB\"\n        ],\n        \"Available Memory\": [\n            \"5.26\",\n            \"GB\"\n        ],\n        \"Used Memory\": [\n            \"1.52\",\n            \"GB\"\n        ],\n        \"Memory Usage\": [\n            \"29.30\",\n            \"%\"\n        ],\n        \"Disk Usage\": {\n            \"Total\": [\n                \"232.64\",\n                \"GB\"\n            ],\n            \"Used\": [\n                \"34.86\",\n                \"GB\"\n            ],\n            \"Free\": [\n                \"185.89\",\n                \"GB\"\n            ],\n            \"Usage\": [\n                \"15.80\",\n                \"%\"\n            ]\n        }\n    }\n}",
+    "INFO reseau": "{\n    \"Ping Test\": \"Failed\",\n    \"HTTP Test\": \"Failed\",\n    \"Socket Test 8.8.8.8:443\": \"Failed\",\n    \"Socket Test 1.1.1.1:80\": \"Failed\",\n    \"Speed Test\": \"Failed\"\n}",
+    "PREF": {
+        "icone": "../Resources/ico.png",
+        "cache": {
+            "test": "cache/test.json"
+        },
+        "interface": "graphique",
+        "bin": "/home/rick/Bureau/projet/HULBERT/App/Fonctions/bin",
+        "sbin": "/home/rick/Bureau/projet/HULBERT/App/Fonctions/sbin",
+        "Database": "/home/rick/Bureau/projet/HULBERT/Database",
+        "Resources": "/home/rick/Bureau/projet/HULBERT/Resources",
+        "Routes": "/home/rick/Bureau/projet/HULBERT/Routes"
+    }
+}
