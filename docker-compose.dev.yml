@@ -1,0 +1,79 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: hulbert-postgres-dev
+    environment:
+      POSTGRES_DB: hulbert_db
+      POSTGRES_USER: hulbert
+      POSTGRES_PASSWORD: hulbert_password
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - hulbert-dev-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: hulbert-redis-dev
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_dev_data:/data
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    networks:
+      - hulbert-dev-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: development
+    container_name: hulbert-backend-dev
+    environment:
+      DATABASE_URL: postgresql://hulbert:hulbert_password@postgres:5432/hulbert_db
+      DATABASE_URL_ASYNC: postgresql+asyncpg://hulbert:hulbert_password@postgres:5432/hulbert_db
+      REDIS_URL: redis://redis:6379/0
+      JWT_SECRET: dev-secret-key
+      ENVIRONMENT: development
+      CORS_ORIGINS: http://localhost:4200,http://127.0.0.1:4200
+    volumes:
+      - ./backend:/app
+      - /app/__pycache__
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+    networks:
+      - hulbert-dev-network
+
+  frontend:
+    build:
+      context: ./domains/informatique/02-projects/portfolio/Portfolio/angular-portfolio
+      dockerfile: Dockerfile
+      target: development
+    container_name: hulbert-frontend-dev
+    volumes:
+      - ./domains/informatique/02-projects/portfolio/Portfolio/angular-portfolio:/app
+      - /app/node_modules
+    ports:
+      - "4200:4200"
+    restart: unless-stopped
+    networks:
+      - hulbert-dev-network
+
+volumes:
+  postgres_dev_data:
+    driver: local
+  redis_dev_data:
+    driver: local
+
+networks:
+  hulbert-dev-network:
+    driver: bridge

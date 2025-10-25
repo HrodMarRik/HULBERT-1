@@ -1,0 +1,2429 @@
+
+<div class="ajaxbloc bind-ajaxReload" data-ajax-env="akkZVwAV+3EkPebDn0QMlP8SY58SXrjV1D2ZGuJ/VjWSoyrRDhd4dLwMPrukxwpA94tm/A4a1qGEz+mJKoRgF5aCl5fAQ7aBwxXrbYU6p3bwE5xjvguAIxPoQMCgmICCLfUYHVyypfVpQz/gy1SsqObXqHDVlHTJWMiZopQNh2wNxDEKXct8KruXfJVlEzUVauNFxSfYKal/pR++pjd8pyxpsOpm/GnDPnHhmAQQ7HYb0HMSFXBuMwkJWI3dUD7GehEDjfPb+Q==" data-origin="/fr/Challenges/App-Systeme/">
+<div class="small-12 columns">
+<div class="tile">
+<div class="t-body tb-padding">
+<h1 class="crayon rubrique-titre-203 "><img src="IMG/logo/rubon203.svg?1637496500" alt="App - Système" width="48" height="48" class="vmiddle" itemprop="image">&nbsp;<span itemprop="headline name">App - Système</span></h1>
+<h3 class="crayon rubrique-descriptif-203 " itemprop="description">Cette série d’épreuves vous confronte aux vulnérabilités applicatives principalement liées aux erreurs de programmation aboutissant à des corruptions de zones mémoire.
+</h3>
+<div class="texte crayon rubrique-texte-203 " itemprop="text"><p>Les identifiants de connexion sont fournis pour les différents challenges. Le but est d’obtenir des droits supplémentaires en exploitant des faiblesses de programmes et ainsi obtenir un mot de passe permettant de valider chaque épreuve sur le portail.</p>
+<p>Prérequis&nbsp;:
+<br><span class="spip-puce ltr"><b>–</b></span>&nbsp;Maitriser un débogueur, par exemple GDB&nbsp;;
+<br><span class="spip-puce ltr"><b>–</b></span>&nbsp;Avoir des bases en langage assembleur (notamment x86)&nbsp;;
+<br><span class="spip-puce ltr"><b>–</b></span>&nbsp;Connaitre le langage C.</p></div>
+</div>
+</div>
+</div>
+<div class="ajaxbloc ajax-id-liste_challenge bind-ajaxReload" data-ajax-env="gkmVV8cU+7B06izJ8nW7rgcx86nRQClH/lOZDyHw5ugljH2Xb0mJg0SVEUSr3fZOw9GrI1uyS0SVCVGv/hTkuHDFXnwwBe3eZyUlxyNrNcrAjaDFlvoH7/QIUwJA2H3A6VfkMw187yiBfgx6NNRBdK6QVniX095XOUACZFhPEBJXj7nhsY8lhmZESKh+hh4hSQIiRhXs8QgcSOAQ2Y3QyNlbUURicOVAoQ4poAQvqIVXQufi68BUwhyX6/60U1eO/Wp18OXOzYgcQhzTHg/v3gyt1Le7mxE3AzKCeOEKkRJYSuXV1XNyUTnmX0w1bhx8J3VVNwkK" data-origin="/fr/Challenges/App-Systeme/">
+<script> 
+function reload_liste_challenge(){
+ajaxReload('liste_challenge_inc',{args:{id_rubrique:203,titre_co:$('#titre_co').val()},history:false});
+}
+$(document).ready(function(){
+var t = null;
+$("#titre_co").on('input propertychange paste', function() {
+if (t) clearTimeout(t);
+t = setTimeout(reload_liste_challenge, 250);
+});
+});
+</script>
+<div class="small-12 columns">
+<div class="tile">
+<div class="t-body tb-padding">
+<div class="right">
+<form id="filtrer_liste_challenge" action="/fr/Challenges/App-Systeme/#liste_challenge" method="get">
+<input type="search" id="titre_co" name="titre_co" placeholder="Filtrer">
+</form>
+</div>                
+<div class="ajaxbloc ajax-id-liste_challenge_inc bind-ajaxReload" data-ajax-env="UlSJN4AU53E0Cpq+PhZew4HNWMiTKzRNiq+Onkkey+M8Ir4L0K/H8gWK5wCXvjazhSqo5KTbtMjJ0ke7xnSoaDdTrtEAwzGEHIDrnrPFRKNUJ6o2HPHwHJ+Vw41489l+VIBalKV9IcaKvHrP9wmyw+rc8wTtB/ul/KikAGjqBRB4zw/bfA+wGc5x5p2UOm2yOnf2dI/t/FmEoR+dgEk=" data-origin="/fr/Challenges/App-Systeme/">
+<h1 id="liste_challenge">
+<img src="IMG/logo/rubon5.svg?1637496507" alt="challenges" width="48" height="48" class="vmiddle">&nbsp;<b class="color1">93</b>&nbsp;Challenges
+</h1>
+<a id="pagination_co" class="pagination_ancre"></a>
+<table class="text-center" style="width: 100%">
+<thead>
+<tr class="row_first">
+<td>Résultats</td>
+<td><a href="/fr/Challenges/App-Systeme/?tri_co=titre" class="ajax bind-ajax">Nom</a></td>
+<td class="hide-for-small-only"><a href="/fr/Challenges/App-Systeme/?tri_co=nombre_validation" class="ajax bind-ajax">Validations</a></td>
+<td><a href="/fr/Challenges/App-Systeme/?tri_co=score" class="ajax bind-ajax">Nombre de points</a>&nbsp;&nbsp;<a class="mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Flegende&amp;lang=fr&amp;ajah=1 #score" title="Explications sur les scores" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Flegende&amp;lang=fr&amp;ajah=1 #score"><img src="squelettes/img/question_mark.svg" width="16" height="16" alt="Explications sur les scores"></a></td>
+<td class="text-center show-for-medium-up"><a href="/fr/Challenges/App-Systeme/?tri_co=id_mot" class="ajax bind-ajax">Difficulté</a>&nbsp;&nbsp;<a class="mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Flegende&amp;lang=fr&amp;ajah=1 #difficulte" title="Difficulté" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Flegende&amp;lang=fr&amp;ajah=1 #difficulte"><img src="squelettes/img/question_mark.svg" width="16" height="16" alt="Difficulté"></a></td>
+<td class="text-center show-for-large-up"><a href="/fr/Challenges/App-Systeme/?tri_co=auteurs" class="ajax bind-ajax">Auteur</a></td>
+<td class="show-for-medium-up"><a href="/fr/Challenges/App-Systeme/?tri_co=note_ponderee" class="ajax bind-ajax">Note</a>&nbsp;&nbsp;<a class="mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Flegende&amp;lang=fr&amp;ajah=1 #note" title="Notation" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Flegende&amp;lang=fr&amp;ajah=1 #note"><img src="squelettes/img/question_mark.svg" width="16" height="16" alt="Notation"></a></td>
+<td class="show-for-large-up"><a href="/fr/Challenges/App-Systeme/?tri_co=nombre_solution" class="ajax bind-ajax">Solution</a></td>
+<td class="show-for-large-up"><a href="/fr/Challenges/App-Systeme/?tri_co=date_publication" class="ajax bind-ajax">Date</a></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/valide.svg" width="12" height="12" alt="valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Stack-buffer-overflow-basic-1" title="Un niveau intermédiaire afin de vous familiariser avec les débordements de pile">ELF x86 - Stack buffer overflow basic 1</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 7%; background-color: #ff4b4b;">7%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=657&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=657&amp;lang=fr&amp;ajah=1">25681</a>
+</span>
+</td>
+<td>5</td>
+<td class="show-for-medium-up">
+<a href="tag/Tres-facile?lang=fr" title="Très facile : Premier niveau des challenges"><span class="difficulte difficulte1   difficulte1a" style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Lyes" href="/Lyes?lang=fr">Lyes</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">25 mars 2015</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/valide.svg" width="12" height="12" alt="valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Basic-heap-overflow" title="heap heap heap hourra">ELF x64 - Basic heap overflow</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1719&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1719&amp;lang=fr&amp;ajah=1">2558</a>
+</span>
+</td>
+<td>10</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de sourcePerrier" href="/sourcePerrier?lang=fr">sourcePerrier</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">13 février 2023</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/valide.svg" width="12" height="12" alt="valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Stack-buffer-overflow-basic-2" title="Un niveau intermédiaire afin de vous familiariser avec les débordements de pile">ELF x86 - Stack buffer overflow basic 2</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 5%; background-color: #ff4b4b;">5%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=844&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=844&amp;lang=fr&amp;ajah=1">17584</a>
+</span>
+</td>
+<td>10</td>
+<td class="show-for-medium-up">
+<a href="tag/Tres-facile?lang=fr" title="Très facile : Premier niveau des challenges"><span class="difficulte difficulte1   difficulte1a" style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Lyes" href="/Lyes?lang=fr">Lyes</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">10 avril 2015</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/PE32-Stack-buffer-overflow-basic" title="Basic stack buffer overflow">PE32 - Stack buffer overflow basic</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1963&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1963&amp;lang=fr&amp;ajah=1">2667</a>
+</span>
+</td>
+<td>10</td>
+<td class="show-for-medium-up">
+<a href="tag/Tres-facile?lang=fr" title="Très facile : Premier niveau des challenges"><span class="difficulte difficulte1   difficulte1a" style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Ech0" href="/ech0?lang=fr">Ech0</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">9</td>
+<td class="show-for-large-up">3 décembre 2019</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Format-string-bug-basic-1" title="... ou comment lire dans la pile.">ELF x86 - Format string bug basic 1</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 3%; background-color: #ff4b4b;">3%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=210&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=210&amp;lang=fr&amp;ajah=1">10985</a>
+</span>
+</td>
+<td>15</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Lu33Y" href="/Lu33Y?lang=fr">Lu33Y</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">9</td>
+<td class="show-for-large-up">8 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Stack-buffer-overflow-basic" title="first step to 64 bits">ELF x64 - Stack buffer overflow - basic</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 3%; background-color: #ff4b4b;">3%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=874&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=874&amp;lang=fr&amp;ajah=1">8545</a>
+</span>
+</td>
+<td>20</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Arod" href="/Arod?lang=fr">Arod</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">31 mai 2015</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Format-string-bug-basic-2" title="Ou comment écrire ce que l'on veut où l'on veut dans la pile">ELF x86 - Format string bug basic 2</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 2%; background-color: #ff4b4b;">2%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=841&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=841&amp;lang=fr&amp;ajah=1">5625</a>
+</span>
+</td>
+<td>20</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Lyes" href="/Lyes?lang=fr">Lyes</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">8</td>
+<td class="show-for-large-up">8 avril 2015</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Race-condition" title="Es-tu assez rapide ?">ELF x86 - Race condition</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 2%; background-color: #ff4b4b;">2%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=224&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=224&amp;lang=fr&amp;ajah=1">7069</a>
+</span>
+</td>
+<td>20</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Lu33Y" href="/Lu33Y?lang=fr">Lu33Y</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">11</td>
+<td class="show-for-large-up">8 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-ARM-Stack-buffer-overflow-basic" title="Introduction aux corruptions mémoire sur ARM">ELF ARM - Stack buffer overflow - basic</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1438&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1438&amp;lang=fr&amp;ajah=1">1570</a>
+</span>
+</td>
+<td>25</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">9</td>
+<td class="show-for-large-up">9 mars 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-MIPS-Stack-buffer-overflow-No-NX" title="Introduction à l'exploitation de binaire MIPS">ELF MIPS - Stack buffer overflow - No NX</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1898&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1898&amp;lang=fr&amp;ajah=1">630</a>
+</span>
+</td>
+<td>25</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de franb" href="/franb?lang=fr">franb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">4</td>
+<td class="show-for-large-up">28 septembre 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Double-free" title="Rule #2 : Double tap">ELF x64 - Double free</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1781&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1781&amp;lang=fr&amp;ajah=1">1344</a>
+</span>
+</td>
+<td>25</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Esad" href="/Esad?lang=fr">Esad</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">9</td>
+<td class="show-for-large-up">23 mars 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Stack-buffer-overflow-basic-3" title="Un niveau intermédiaire afin de vous familiariser avec les débordements de pile">ELF x86 - Stack buffer overflow basic 3</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 2%; background-color: #ff4b4b;">2%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=847&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=847&amp;lang=fr&amp;ajah=1">5746</a>
+</span>
+</td>
+<td>25</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Lyes" href="/Lyes?lang=fr">Lyes</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">10 avril 2015</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Use-After-Free-basic" title="UAF">ELF x86 - Use After Free - basic</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1779&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1779&amp;lang=fr&amp;ajah=1">2297</a>
+</span>
+</td>
+<td>25</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Esad" href="/Esad?lang=fr">Esad</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">26 mai 2019</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-ARM-Stack-Spraying" title="C'est pas très propre... mais ça marche.">ELF ARM - Stack Spraying</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1491&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1491&amp;lang=fr&amp;ajah=1">322</a>
+</span>
+</td>
+<td>30</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note3.svg?1640086076" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">2 avril 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Stack-buffer-overflow-PIE" title="Position Independent Executable, ou comment prévoir l'imprévisible">ELF x64 - Stack buffer overflow - PIE</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2010&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2010&amp;lang=fr&amp;ajah=1">1434</a>
+</span>
+</td>
+<td>30</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de HomardBoy" href="/HomardBoy?lang=fr">HomardBoy</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">8</td>
+<td class="show-for-large-up">26 mars 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-BSS-buffer-overflow" title="qui a dit que les dépassements ne se font que dans la pile ?">ELF x86 - BSS buffer overflow</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 2%; background-color: #ff4b4b;">2%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=214&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=214&amp;lang=fr&amp;ajah=1">4589</a>
+</span>
+</td>
+<td>30</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Lu33Y" href="/Lu33Y?lang=fr">Lu33Y</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">8 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Stack-buffer-overflow-basic-4" title="Tu peux me retourner l'env s'il-te-plaît ?">ELF x86 - Stack buffer overflow basic 4</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=216&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=216&amp;lang=fr&amp;ajah=1">3233</a>
+</span>
+</td>
+<td>30</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Lu33Y" href="/Lu33Y?lang=fr">Lu33Y</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">8 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Stack-buffer-overflow-basic-6" title="ret2libc">ELF x86 - Stack buffer overflow basic 6</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1007&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1007&amp;lang=fr&amp;ajah=1">3454</a>
+</span>
+</td>
+<td>30</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de TiWim" href="/TiWim?lang=fr">TiWim</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">8</td>
+<td class="show-for-large-up">10 mars 2016</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Format-String-Bug-Basic-3" title="Une autre approche de l'exploitation d'un bug de format">ELF x86 - Format String Bug Basic 3</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=849&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=849&amp;lang=fr&amp;ajah=1">1528</a>
+</span>
+</td>
+<td>35</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Lyes" href="/Lyes?lang=fr">Lyes</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">8</td>
+<td class="show-for-large-up">27 mai 2015</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/PE32-Stack-buffer-overflow-avance" title="Advanced stack buffer overflow">PE32 - Stack buffer overflow avancé</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1964&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1964&amp;lang=fr&amp;ajah=1">282</a>
+</span>
+</td>
+<td>35</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Ech0" href="/ech0?lang=fr">Ech0</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">3 décembre 2019</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-ARM-Basic-ROP" title="ROP pour les nuls vol. 1">ELF ARM - Basic ROP</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1439&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1439&amp;lang=fr&amp;ajah=1">950</a>
+</span>
+</td>
+<td>40</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">8</td>
+<td class="show-for-large-up">11 mars 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-MIPS-Basic-ROP" title="Premier ROP en MIPS">ELF MIPS - Basic ROP</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1884&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1884&amp;lang=fr&amp;ajah=1">209</a>
+</span>
+</td>
+<td>40</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de dagger" href="/dagger-16674?lang=fr">dagger</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">7 octobre 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-RISC-V-Intro-let-s-do-the-ROP" title="Let's do the rop with RISC-V.. No Risc.. No Fame">ELF RISC-V - Intro - let’s do the ROP</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2831&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2831&amp;lang=fr&amp;ajah=1">98</a>
+</span>
+</td>
+<td>40</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de nobodyisnobody" href="/nobodyisnobody?lang=fr">nobodyisnobody</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">13 février 2023</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Stack-buffer-overflow-Stack-pivot" title="Pas de place ? Pas de problème !">ELF x64 - Stack buffer overflow - Stack pivot</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=4326&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=4326&amp;lang=fr&amp;ajah=1">213</a>
+</span>
+</td>
+<td>40</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de spikeroot" href="/spikeroot?lang=fr">spikeroot</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">11 juillet 2024</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Stack-buffer-overflow-C-vtables" title="Buffer overflow sur les vtables">ELF x86 - Stack buffer overflow - C++ vtables</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=910&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=910&amp;lang=fr&amp;ajah=1">1079</a>
+</span>
+</td>
+<td>40</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de sebbb" href="/sebbb?lang=fr">sebbb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">20 juillet 2015</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/PE32-Format-string-bug" title="Exploitation d'un format string bug PE">PE32+ Format string bug</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1965&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1965&amp;lang=fr&amp;ajah=1">117</a>
+</span>
+</td>
+<td>45</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Ech0" href="/ech0?lang=fr">Ech0</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">4</td>
+<td class="show-for-large-up">3 décembre 2019</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Logic-bug" title="glibc indirect weakness and common bug">ELF x64 - Logic bug</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1553&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1553&amp;lang=fr&amp;ajah=1">271</a>
+</span>
+</td>
+<td>50</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de sbrk" href="/sbrk?lang=fr">sbrk</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">8 juillet 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Bug-Hunting-Plusieurs-problemes" title="Un salaire d'exception ?">ELF x86 - Bug Hunting - Plusieurs problèmes</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1565&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1565&amp;lang=fr&amp;ajah=1">157</a>
+</span>
+</td>
+<td>50</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de sbrk" href="/sbrk?lang=fr">sbrk</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">4</td>
+<td class="show-for-large-up">19 janvier 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Stack-buffer-and-integer-overflow" title="Plus ou moins ?">ELF x86 - Stack buffer and integer overflow</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=222&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=222&amp;lang=fr&amp;ajah=1">2171</a>
+</span>
+</td>
+<td>50</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Lu33Y" href="/Lu33Y?lang=fr">Lu33Y</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">8 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Stack-buffer-overflow-ret2dl_resolve" title="no leak, no bruteforce">ELF x86 - Stack buffer overflow - ret2dl_resolve</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1897&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1897&amp;lang=fr&amp;ajah=1">494</a>
+</span>
+</td>
+<td>50</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de kikko" href="/kikko?lang=fr">kikko</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">28 février 2019</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Stack-buffer-overflow-basic-5" title="Ne m'écrase pas !">ELF x86 - Stack buffer overflow basic 5</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=220&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=220&amp;lang=fr&amp;ajah=1">2054</a>
+</span>
+</td>
+<td>50</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Lu33Y" href="/Lu33Y?lang=fr">Lu33Y</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">8 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Stack-buffer-overflow-avance" title="ROP 64 bits">ELF x64 - Stack buffer overflow - avancé</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=870&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=870&amp;lang=fr&amp;ajah=1">1660</a>
+</span>
+</td>
+<td>55</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Arod" href="/Arod?lang=fr">Arod</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">5 juin 2015</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-MIPS-Format-String-Glitch" title="Faire du neuf avec l'ancien">ELF MIPS - Format String Glitch</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1913&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1913&amp;lang=fr&amp;ajah=1">104</a>
+</span>
+</td>
+<td>60</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a> ,  
+<a class="txt_6forum" title="profil de martin" href="/martin-76750?lang=fr">martin</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">21 octobre 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Heap-Filling" title="Fill your media player with some good music">ELF x64 - Heap Filling</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2857&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2857&amp;lang=fr&amp;ajah=1">145</a>
+</span>
+</td>
+<td>60</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de voydstack" href="/voydstack?lang=fr">voydstack</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">27 mai 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Information-leakage-with-Stack-Smashing-Protector" title="Beaucoup de protections, mais... ">ELF x86 - Information leakage with Stack Smashing Protector</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=864&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=864&amp;lang=fr&amp;ajah=1">1023</a>
+</span>
+</td>
+<td>60</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Arod" href="/Arod?lang=fr">Arod</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">20 mai 2015</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-File-Structure-Hacking" title="Sometimes , when it comes from the heart, a single byte is more than enough...">ELF x64 - File Structure Hacking</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2346&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2346&amp;lang=fr&amp;ajah=1">133</a>
+</span>
+</td>
+<td>65</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de nobodyisnobody" href="/nobodyisnobody?lang=fr">nobodyisnobody</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">27 mai 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-ARM-Race-condition" title="Allez-vous gagner la course ?">ELF ARM - Race condition</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1430&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1430&amp;lang=fr&amp;ajah=1">182</a>
+</span>
+</td>
+<td>70</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">3 juin 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Browser-exploit-Intro" title="Hack mah browser !">ELF x64 - Browser exploit - Intro</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1578&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1578&amp;lang=fr&amp;ajah=1">120</a>
+</span>
+</td>
+<td>70</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">2 novembre 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Buggy-VM" title="It's primitive.">ELF x64 - Buggy VM</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2894&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2894&amp;lang=fr&amp;ajah=1">94</a>
+</span>
+</td>
+<td>70</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de NonStandardModel" href="/NonStandardModel?lang=fr">NonStandardModel</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">10 juin 2022</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Heap-Safe-Linking-Bypass" title="Safe or not Safe , that is the question...">ELF x64 - Heap Safe-Linking Bypass</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2981&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2981&amp;lang=fr&amp;ajah=1">117</a>
+</span>
+</td>
+<td>70</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de nobodyisnobody" href="/nobodyisnobody?lang=fr">nobodyisnobody</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">2</td>
+<td class="show-for-large-up">22 octobre 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-ret2dl_init" title="C'est quoi cette adresse ld sur la stack ?">ELF x64 - ret2dl_init</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2815&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2815&amp;lang=fr&amp;ajah=1">66</a>
+</span>
+</td>
+<td>70</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de kikko" href="/kikko?lang=fr">kikko</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">27 mai 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Out-of-bounds-attack-French-Paradox" title="Un paradoxe en couleur">ELF x86 - Out of bounds attack - French Paradox</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1547&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1547&amp;lang=fr&amp;ajah=1">150</a>
+</span>
+</td>
+<td>70</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de sbrk" href="/sbrk?lang=fr">sbrk</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">17 septembre 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Remote-BSS-buffer-overflow" title="Essaie de pirater mon bot IRC pour voir !">ELF x86 - Remote BSS buffer overflow</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=202&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=202&amp;lang=fr&amp;ajah=1">780</a>
+</span>
+</td>
+<td>75</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Tosh" href="/Tosh?lang=fr">Tosh</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">4</td>
+<td class="show-for-large-up">9 avril 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Remote-Format-String-bug" title="Ressens le pouvoir des format strings !">ELF x86 - Remote Format String bug</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=200&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=200&amp;lang=fr&amp;ajah=1">1023</a>
+</span>
+</td>
+<td>75</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Tosh" href="/Tosh?lang=fr">Tosh</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">6 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/PE32-Basic-ROP" title="Stack buffer overflow ROP">PE32+ Basic ROP</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1966&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1966&amp;lang=fr&amp;ajah=1">81</a>
+</span>
+</td>
+<td>75</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Ech0" href="/ech0?lang=fr">Ech0</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">6 décembre 2019</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Remote-heap-buffer-overflow-tcache" title="2 be free">ELF x64 - Remote heap buffer overflow - tcache</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1370&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1370&amp;lang=fr&amp;ajah=1">341</a>
+</span>
+</td>
+<td>80</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de franb" href="/franb?lang=fr">franb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">4</td>
+<td class="show-for-large-up">5 février 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Blind-remote-format-string-bug" title="Compromission du service réseau sans accès au binaire ou code source">ELF x86 - Blind remote format string bug</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=884&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=884&amp;lang=fr&amp;ajah=1">357</a>
+</span>
+</td>
+<td>80</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Lyes" href="/Lyes?lang=fr">Lyes</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">8</td>
+<td class="show-for-large-up">8 juin 2015</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/LinKern-ARM-syscall-vulnerable" title="Introduction aux exploitations kernel sur ARM">LinKern ARM - syscall vulnérable</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1429&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1429&amp;lang=fr&amp;ajah=1">199</a>
+</span>
+</td>
+<td>85</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">4</td>
+<td class="show-for-large-up">22 mars 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/LinKern-x86-Buffer-overflow-basic-1" title="Point trop n'en faut">LinKern x86 - Buffer overflow basic 1</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1012&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1012&amp;lang=fr&amp;ajah=1">610</a>
+</span>
+</td>
+<td>85</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de franb" href="/franb?lang=fr">franb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">16 février 2016</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Sigreturn-Oriented-Programming" title="SROP">ELF x64 - Sigreturn Oriented Programming</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=888&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=888&amp;lang=fr&amp;ajah=1">326</a>
+</span>
+</td>
+<td>90</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Arod" href="/Arod?lang=fr">Arod</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">8</td>
+<td class="show-for-large-up">25 juin 2015</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/LinKern-x86-Null-pointer-dereference" title="Gardez le controle">LinKern x86 - Null pointer dereference</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1013&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1013&amp;lang=fr&amp;ajah=1">574</a>
+</span>
+</td>
+<td>90</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de franb" href="/franb?lang=fr">franb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">2</td>
+<td class="show-for-large-up">16 février 2016</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Syscall-chaining" title="Un seul appel système et puis c'est tout.">ELF x64 - Syscall chaining</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=4409&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=4409&amp;lang=fr&amp;ajah=1">41</a>
+</span>
+</td>
+<td>95</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Njörd" href="/Njord?lang=fr">Njörd</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">11 juillet 2024</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/LinKern-x64-Race-condition" title="Ne pas faire deux choses en même temps">LinKern x64 - Race condition</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1015&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1015&amp;lang=fr&amp;ajah=1">391</a>
+</span>
+</td>
+<td>95</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de franb" href="/franb?lang=fr">franb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">2</td>
+<td class="show-for-large-up">16 février 2016</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-ARM-Shellcode-alphanumerique" title="Entrée alphanumérique">ELF ARM - Shellcode alphanumérique</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1427&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1427&amp;lang=fr&amp;ajah=1">58</a>
+</span>
+</td>
+<td>100</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note3.svg?1640086076" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">16 mars 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-MIPS-URLEncoded-Format-String-bug" title="Parfois, les mitigations de sécurité consistent simplement à ralentir l'attaquant lors de l'exploitation">ELF MIPS - URLEncoded Format String bug</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1624&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1624&amp;lang=fr&amp;ajah=1">47</a>
+</span>
+</td>
+<td>100</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note3.svg?1640086076" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">7 octobre 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Blind-SROP" title="Sigreturn\n">ELF x64 - Blind SROP</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2263&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2263&amp;lang=fr&amp;ajah=1">31</a>
+</span>
+</td>
+<td>100</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de s1m" href="/s1m?lang=fr">s1m</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">28 décembre 2023</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Heap-Hop" title="Variation d'une ancienne technique House of ... sur une libc récente">ELF x64 - Heap Hop</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=4535&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=4535&amp;lang=fr&amp;ajah=1">18</a>
+</span>
+</td>
+<td>100</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de nobodyisnobody" href="/nobodyisnobody?lang=fr">nobodyisnobody</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">0</td>
+<td class="show-for-large-up">11 juillet 2024</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Hardened-binary-1" title="Une série d'épreuves comportant des binaires à reverser pour découvrir les faiblesses qu'ils exposent et les exploiter.">ELF x86 - Hardened binary 1</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=190&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=190&amp;lang=fr&amp;ajah=1">882</a>
+</span>
+</td>
+<td>100</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de sm0k" href="/sm0k?lang=fr">sm0k</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">8</td>
+<td class="show-for-large-up">11 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Hardened-binary-2" title="Une série d'épreuves comportant des binaires à reverser pour découvrir les faiblesses qu'ils exposent et les exploiter.">ELF x86 - Hardened binary 2</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=226&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=226&amp;lang=fr&amp;ajah=1">696</a>
+</span>
+</td>
+<td>100</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de sm0k" href="/sm0k?lang=fr">sm0k</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">11 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Hardened-binary-3" title="Une série d'épreuves comportant des binaires à reverser pour découvrir les faiblesses qu'ils exposents et les exploiter.">ELF x86 - Hardened binary 3</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=228&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=228&amp;lang=fr&amp;ajah=1">408</a>
+</span>
+</td>
+<td>100</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de sm0k" href="/sm0k?lang=fr">sm0k</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">11 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Hardened-binary-4" title="Une série d'épreuves comportant des binaires à reverser pour découvrir les faiblesses qu'ils exposents et les exploiter.">ELF x86 - Hardened binary 4</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=230&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=230&amp;lang=fr&amp;ajah=1">483</a>
+</span>
+</td>
+<td>100</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de sm0k" href="/sm0k?lang=fr">sm0k</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">11 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/LinKern-MIPSel-Vulnerable-ioctl" title="Push it to the limit">LinKern MIPSel - Vulnerable ioctl</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1577&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1577&amp;lang=fr&amp;ajah=1">85</a>
+</span>
+</td>
+<td>100</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">23 octobre 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/LinKern-x64-code-reentrant" title="Regarde à coté">LinKern x64 - code réentrant</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1017&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1017&amp;lang=fr&amp;ajah=1">217</a>
+</span>
+</td>
+<td>100</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de franb" href="/franb?lang=fr">franb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">1er mars 2016</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-ARM-Heap-format-string-bug" title="Aucun retour possible">ELF ARM - Heap format string bug</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1514&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1514&amp;lang=fr&amp;ajah=1">103</a>
+</span>
+</td>
+<td>105</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de franb" href="/franb?lang=fr">franb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">2</td>
+<td class="show-for-large-up">3 juin 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-ARM-Format-String-bug" title="From a trickle to a flood">ELF ARM - Format String bug</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1432&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1432&amp;lang=fr&amp;ajah=1">114</a>
+</span>
+</td>
+<td>110</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">2</td>
+<td class="show-for-large-up">14 mars 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-ARM-Use-After-Free" title="The best things in life are free()">ELF ARM - Use After Free</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1433&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1433&amp;lang=fr&amp;ajah=1">127</a>
+</span>
+</td>
+<td>110</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">22 mars 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-FILE-structure-hijacking" title="Notes are files right ?">ELF x64 - FILE structure hijacking</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2372&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2372&amp;lang=fr&amp;ajah=1">79</a>
+</span>
+</td>
+<td>110</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de voydstack" href="/voydstack?lang=fr">voydstack</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">27 mai 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Heap-feng-shui" title="Have you heard of heap feng shui ?">ELF x64 - Heap feng-shui</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1572&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1572&amp;lang=fr&amp;ajah=1">107</a>
+</span>
+</td>
+<td>110</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de laxa" href="/laxa?lang=fr">laxa</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">4 août 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Off-by-one-bug" title="Effet de bord">ELF x64 - Off-by-one bug</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1055&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1055&amp;lang=fr&amp;ajah=1">170</a>
+</span>
+</td>
+<td>110</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de NeedToLearn" href="/NeedToLearn?lang=fr">NeedToLearn</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">19 mai 2016</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Hardened-binary-5" title="Une série d'épreuves comportant des binaires à reverser pour découvrir les faiblesses qu'ils exposents et les exploiter.">ELF x86 - Hardened binary 5</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=232&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=232&amp;lang=fr&amp;ajah=1">373</a>
+</span>
+</td>
+<td>110</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de sm0k" href="/sm0k?lang=fr">sm0k</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">9</td>
+<td class="show-for-large-up">11 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/LinKern-ARM-Stack-Overflow" title="Kernel stack Smashing 101">LinKern ARM - Stack Overflow</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1449&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1449&amp;lang=fr&amp;ajah=1">84</a>
+</span>
+</td>
+<td>110</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">24 juillet 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/LinKern-x86-basic-ROP" title="Au coeur du ROP">LinKern x86 - basic ROP </a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1030&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1030&amp;lang=fr&amp;ajah=1">332</a>
+</span>
+</td>
+<td>110</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de franb" href="/franb?lang=fr">franb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">6 mai 2016</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-ARM-Heap-Off-by-One" title="Poison the heap for fun and profit">ELF ARM - Heap Off-by-One</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1426&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1426&amp;lang=fr&amp;ajah=1">88</a>
+</span>
+</td>
+<td>115</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">11 mars 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Advanced-blind-format-string-exploitation" title="In space no one can hear you scream..">ELF x64 - Advanced blind format string exploitation</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2928&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2928&amp;lang=fr&amp;ajah=1">22</a>
+</span>
+</td>
+<td>115</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de nobodyisnobody" href="/nobodyisnobody?lang=fr">nobodyisnobody</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">0</td>
+<td class="show-for-large-up">11 juillet 2024</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Remote-Heap-buffer-overflow-1" title="Exploitation d'un heap overflow (ptmalloc2/glibc)">ELF x64 - Remote Heap buffer overflow 1</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=886&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=886&amp;lang=fr&amp;ajah=1">207</a>
+</span>
+</td>
+<td>115</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Tosh" href="/Tosh?lang=fr">Tosh</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">4</td>
+<td class="show-for-large-up">26 juin 2015</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Hardened-binary-6" title="Une série d'épreuves comportant des binaires à reverser pour découvrir les faiblesses qu'ils exposents et les exploiter.">ELF x86 - Hardened binary 6</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=234&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=234&amp;lang=fr&amp;ajah=1">352</a>
+</span>
+</td>
+<td>115</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de sm0k" href="/sm0k?lang=fr">sm0k</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">9</td>
+<td class="show-for-large-up">11 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Hardened-binary-7" title="Byte by byte...">ELF x86 - Hardened binary 7</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=277&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=277&amp;lang=fr&amp;ajah=1">297</a>
+</span>
+</td>
+<td>115</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Tosh" href="/Tosh?lang=fr">Tosh</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">21 janvier 2013</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Remote-stack-buffer-overflow-Hardened" title="Trouvez les infos qu'il vous manque">ELF x86 - Remote stack buffer overflow - Hardened</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1057&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1057&amp;lang=fr&amp;ajah=1">215</a>
+</span>
+</td>
+<td>115</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de franb" href="/franb?lang=fr">franb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">4</td>
+<td class="show-for-large-up">17 août 2016</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/LinKern-x64-RowHammer" title="Flipping bits like 2014 !">LinKern x64 - RowHammer</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1914&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1914&amp;lang=fr&amp;ajah=1">121</a>
+</span>
+</td>
+<td>115</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">17 mars 2019</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/LinKern-x64-SLUB-off-by-one" title="Exploiter l'off-by-one de ce module kernel vulnérable">LinKern x64 - SLUB off-by-one</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1945&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1945&amp;lang=fr&amp;ajah=1">107</a>
+</span>
+</td>
+<td>115</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Tosh" href="/Tosh?lang=fr">Tosh</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">9 mai 2019</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-ARM-Heap-buffer-overflow-Wilderness" title="Use the force Luke">ELF ARM - Heap buffer overflow - Wilderness</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1428&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1428&amp;lang=fr&amp;ajah=1">55</a>
+</span>
+</td>
+<td>120</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">2</td>
+<td class="show-for-large-up">25 mars 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-ARM-Heap-Overflow" title="Pouvez-vous exploiter cette vulnérabilité sur le tas sans pointeur facilitant l'exploit ?">ELF ARM - Heap Overflow</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1487&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1487&amp;lang=fr&amp;ajah=1">75</a>
+</span>
+</td>
+<td>120</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">2 avril 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-ARM64-Heap-Underflow" title="Let's do the ROP on aarch64">ELF ARM64 - Heap Underflow</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=3016&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=3016&amp;lang=fr&amp;ajah=1">39</a>
+</span>
+</td>
+<td>120</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de nobodyisnobody" href="/nobodyisnobody?lang=fr">nobodyisnobody</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">0</td>
+<td class="show-for-large-up">13 février 2023</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Seccomp-Whitelist" title="Bypasser une liste blanche seccomp">ELF x64 - Seccomp Whitelist</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1518&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1518&amp;lang=fr&amp;ajah=1">107</a>
+</span>
+</td>
+<td>120</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">3 juin 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x86-Blind-ROP" title="BROP">ELF x86 - Blind ROP</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1348&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1348&amp;lang=fr&amp;ajah=1">165</a>
+</span>
+</td>
+<td>120</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de franb" href="/franb?lang=fr">franb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">9 octobre 2016</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/LinKern-x64-Memory-exploration" title="Explorez la mémoire du noyau">LinKern x64 - Memory exploration</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1066&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1066&amp;lang=fr&amp;ajah=1">161</a>
+</span>
+</td>
+<td>120</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de franb" href="/franb?lang=fr">franb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">27 juillet 2016</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/WinKern-x64-Stack-buffer-overflow-avance-ROP" title="Reversez le driver, trouvez les vulnerabilités qu'il expose et exploitez les sur un système Windows 10, afin d'obtenir les privilèges SYSTEM">WinKern x64 - Stack buffer overflow avancé - ROP</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2184&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2184&amp;lang=fr&amp;ajah=1">53</a>
+</span>
+</td>
+<td>120</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de __syscall" href="/__syscall?lang=fr">__syscall</a> ,  
+<a class="txt_6forum" title="profil de Synacktiv" href="/Synacktiv?lang=fr">Synacktiv</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">4</td>
+<td class="show-for-large-up">27 janvier 2020</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/WinKern-x64-Use-After-Free" title="Reversez le driver, trouvez les vulnerabilités qu'il expose et exploitez les sur un système Windows 10, afin d'obtenir les privilèges SYSTEM">WinKern x64 - Use After Free</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2186&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2186&amp;lang=fr&amp;ajah=1">38</a>
+</span>
+</td>
+<td>120</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de __syscall" href="/__syscall?lang=fr">__syscall</a> ,  
+<a class="txt_6forum" title="profil de Synacktiv" href="/Synacktiv?lang=fr">Synacktiv</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">2</td>
+<td class="show-for-large-up">27 janvier 2020</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Remote-Heap-buffer-overflow-2" title="Exploitation d'un heap overflow (ptmalloc2/glibc) - compilé avec toutes les protections">ELF x64 - Remote Heap buffer overflow 2</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=911&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=911&amp;lang=fr&amp;ajah=1">162</a>
+</span>
+</td>
+<td>130</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Tosh" href="/Tosh?lang=fr">Tosh</a> ,  
+<a class="txt_6forum" title="profil de Fritz" href="/Fritz?lang=fr">Fritz</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">1er juillet 2015</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Advanced-Heap-Exploitation-Heap-Leakless-Fortified" title="DarkHeap - Leakless, Helpless">ELF x64 - Advanced Heap Exploitation - Heap Leakless &amp; Fortified</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2891&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=2891&amp;lang=fr&amp;ajah=1">70</a>
+</span>
+</td>
+<td>135</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de nobodyisnobody" href="/nobodyisnobody?lang=fr">nobodyisnobody</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">27 mai 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Blind-ROP" title="Hacking blind with BROP">ELF x64 - Blind ROP</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1768&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1768&amp;lang=fr&amp;ajah=1">128</a>
+</span>
+</td>
+<td>135</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de franb" href="/franb?lang=fr">franb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">10 mars 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-x64-Browser-exploit-BitString" title="A bit of browser fun !">ELF x64 - Browser exploit - BitString</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1581&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1581&amp;lang=fr&amp;ajah=1">43</a>
+</span>
+</td>
+<td>135</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de pickle" href="/pickle?lang=fr">pickle</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">15 décembre 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/App-Systeme/ELF-ARM64-Multithreading" title="Prière de ne pas se bousculer">ELF ARM64 - Multithreading</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1888&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=203&amp;id_c=1888&amp;lang=fr&amp;ajah=1">30</a>
+</span>
+</td>
+<td>140</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de franb" href="/franb?lang=fr">franb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">13 février 2023</td>
+</tr>
+</tbody>
+</table>
+</div><!--ajaxbloc-->                
+</div>
+</div>
+</div>
+</div><!--ajaxbloc-->    
+<div class="ajaxbloc bind-ajaxReload" data-ajax-env="gkgVd8YU57CEfS3h/T7zFd7NL3i6XaBu/jcoBke8DfFdujqzygOIUtWAhukxF/JUSQYJ0c24xHSaTl0V+tKJYIoNw9OKT8xfMIQsSnOASBbTAmDSVrksndQYiAAxEbQCtqH26YLkRe54uVm0oCpHTeljnUQ+PyvU2b0FZ9RrjqlJbOiVmpsDXfTHKImfRntt2gBH0+ZwbdfNR8p5btrBxQrNF7AdcDNBBHtHOwyShoBNSy+zE3DUmwbL2mKWf3Ac4hZuhO/SL9bNE57AK+Iw3ywPC/eX2RU3AzKKbII0iBUehedbOzDhuyXCG4ltOCx6U0NA8CO6CD3g2ZoGw8fCBqBLawRc6w==" data-origin="/fr/Challenges/App-Systeme/">
+<div class="small-12 columns">
+<div class="tile">
+<div class="t-body tb-padding">
+<a id="pagination_dernieres_validations" class="pagination_ancre"></a>
+<h1><img src="squelettes/img/valid.svg" alt="Résultats des challenges" class="vmiddle" width="48" height="48">&nbsp;Résultats des challenges</h1>
+<div class="box">
+<table class="text-center mauto" style="width: 100%;">
+<thead>
+<tr class="row_first">
+<td style="width: 20%;">Pseudonyme</td>
+<td style="width: 35%;">Epreuve</td>
+<td class="hide-for-small-only" style="width: 10%;">Langue</td>
+<td class="hide-for-small-only" style="width: 30%;">Date</td>
+</tr>
+</thead>
+<tbody>
+<tr class="row_even">
+<td><a class=" txt_6forum" title="profil de HM154" href="/HM154?lang=fr">HM154</a></td>
+<td>
+<a href="fr/Challenges/App-Systeme/" title="App - Système"><img src="IMG/logo/rubon203.svg?1637496500" alt="App - Système" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/App-Systeme/ELF-x64-Stack-buffer-overflow-basic" title="first step to 64 bits">ELF x64 - Stack buffer overflow - basic</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;15:27</td>
+</tr>
+<tr class="row_odd">
+<td><a class=" txt_6forum" title="profil de HM154" href="/HM154?lang=fr">HM154</a></td>
+<td>
+<a href="fr/Challenges/App-Systeme/" title="App - Système"><img src="IMG/logo/rubon203.svg?1637496500" alt="App - Système" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/App-Systeme/ELF-x86-Format-string-bug-basic-1" title="... ou comment lire dans la pile.">ELF x86 - Format string bug basic 1</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;15:20</td>
+</tr>
+<tr class="row_even">
+<td><a class=" txt_6forum" title="profil de HM154" href="/HM154?lang=fr">HM154</a></td>
+<td>
+<a href="fr/Challenges/App-Systeme/" title="App - Système"><img src="IMG/logo/rubon203.svg?1637496500" alt="App - Système" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/App-Systeme/PE32-Stack-buffer-overflow-basic" title="Basic stack buffer overflow">PE32 - Stack buffer overflow basic</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;15:14</td>
+</tr>
+<tr class="row_odd">
+<td><a class=" txt_6forum" title="profil de tonio2408" href="/tonio2408?lang=fr">tonio2408</a></td>
+<td>
+<a href="fr/Challenges/App-Systeme/" title="App - Système"><img src="IMG/logo/rubon203.svg?1637496500" alt="App - Système" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/App-Systeme/ELF-x86-Information-leakage-with-Stack-Smashing-Protector" title="Beaucoup de protections, mais... ">ELF x86 - Information leakage with Stack Smashing Protector</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;15:08</td>
+</tr>
+<tr class="row_even">
+<td><a class=" txt_6forum" title="profil de HM154" href="/HM154?lang=fr">HM154</a></td>
+<td>
+<a href="fr/Challenges/App-Systeme/" title="App - Système"><img src="IMG/logo/rubon203.svg?1637496500" alt="App - Système" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/App-Systeme/ELF-x86-Stack-buffer-overflow-basic-2" title="Un niveau intermédiaire afin de vous familiariser avec les débordements de pile">ELF x86 - Stack buffer overflow basic 2</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;15:04</td>
+</tr>
+<tr class="row_odd">
+<td><a class=" txt_6forum" title="profil de zioperahackerotutto" href="/spip.php?auteur1039816&amp;lang=fr">zioperahackerotutto</a></td>
+<td>
+<a href="en/Challenges/App-System/" title="App - System"><img src="IMG/logo/rubon203.svg?1637496500" alt="App - System" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="en/Challenges/App-System/ELF-x86-Stack-buffer-overflow-basic-2" title="An intermediate level to familiarize yourself with stack overflows">ELF x86 - Stack buffer overflow basic 2	</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/en.svg?1637569714" alt="en" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;15:03</td>
+</tr>
+<tr class="row_even">
+<td><a class=" txt_6forum" title="profil de zioperahackerotutto" href="/spip.php?auteur1039816&amp;lang=fr">zioperahackerotutto</a></td>
+<td>
+<a href="en/Challenges/App-System/" title="App - System"><img src="IMG/logo/rubon203.svg?1637496500" alt="App - System" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="en/Challenges/App-System/ELF-x86-Stack-buffer-overflow-basic-1" title="An intermediate level to familiarize yourself with stack overflows">ELF x86 - Stack buffer overflow basic 1</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/en.svg?1637569714" alt="en" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;14:50</td>
+</tr>
+<tr class="row_odd">
+<td><a class=" txt_5pre" title="profil de kiperZ" href="/kiperZ?lang=fr">kiperZ</a></td>
+<td>
+<a href="fr/Challenges/App-Systeme/" title="App - Système"><img src="IMG/logo/rubon203.svg?1637496500" alt="App - Système" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/App-Systeme/ELF-x64-Seccomp-Whitelist" title="Bypasser une liste blanche seccomp">ELF x64 - Seccomp Whitelist</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;14:46</td>
+</tr>
+<tr class="row_even">
+<td><a class=" txt_6forum" title="profil de savtog" href="/savtog?lang=fr">savtog</a></td>
+<td>
+<a href="en/Challenges/App-System/" title="App - System"><img src="IMG/logo/rubon203.svg?1637496500" alt="App - System" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="en/Challenges/App-System/ELF-x86-Race-condition" title="Are you fast enough ?">ELF x86 - Race condition</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/ru.svg?1594376629" alt="ru" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;14:41</td>
+</tr>
+<tr class="row_odd">
+<td><a class=" txt_6forum" title="profil de HM154" href="/HM154?lang=fr">HM154</a></td>
+<td>
+<a href="fr/Challenges/App-Systeme/" title="App - Système"><img src="IMG/logo/rubon203.svg?1637496500" alt="App - Système" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/App-Systeme/ELF-x86-Stack-buffer-overflow-basic-1" title="Un niveau intermédiaire afin de vous familiariser avec les débordements de pile">ELF x86 - Stack buffer overflow basic 1</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;14:20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pagination-centered">
+<ul class="pagination">
+<li class="current"><a href="/fr/Challenges/App-Systeme/?debut_dernieres_validations=0#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">0</a></li>
+<li><a href="/fr/Challenges/App-Systeme/?debut_dernieres_validations=10#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">10</a></li>
+<li><a href="/fr/Challenges/App-Systeme/?debut_dernieres_validations=20#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">20</a></li>
+<li><a href="/fr/Challenges/App-Systeme/?debut_dernieres_validations=30#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">30</a></li>
+<li><a href="/fr/Challenges/App-Systeme/?debut_dernieres_validations=40#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">40</a></li>
+<li><a href="/fr/Challenges/App-Systeme/?debut_dernieres_validations=50#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">50</a></li>
+<li><a href="/fr/Challenges/App-Systeme/?debut_dernieres_validations=60#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">60</a></li>
+<li><a href="/fr/Challenges/App-Systeme/?debut_dernieres_validations=70#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">70</a></li>
+<li><a href="/fr/Challenges/App-Systeme/?debut_dernieres_validations=80#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">80</a></li>
+<li><a href="/fr/Challenges/App-Systeme/?debut_dernieres_validations=490#pagination_dernieres_validations" class="lien_pagination ajax bind-ajax" rel="nofollow">...</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div><!--ajaxbloc-->    
+</div><!--ajaxbloc-->                  

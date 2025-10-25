@@ -1,0 +1,150 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: hulbert-postgres
+    environment:
+      POSTGRES_DB: hulbert_db
+      POSTGRES_USER: hulbert
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-hulbert_password}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hulbert -d hulbert_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - hulbert-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: hulbert-redis
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-redis_password}
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - hulbert-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: production
+    container_name: hulbert-backend
+    environment:
+      DATABASE_URL: postgresql://hulbert:${DB_PASSWORD:-hulbert_password}@postgres:5432/hulbert_db
+      DATABASE_URL_ASYNC: postgresql+asyncpg://hulbert:${DB_PASSWORD:-hulbert_password}@postgres:5432/hulbert_db
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_password}@redis:6379/0
+      JWT_SECRET: ${JWT_SECRET:-your-production-secret-key}
+      ENVIRONMENT: production
+      CORS_ORIGINS: ${CORS_ORIGINS:-https://your-domain.com,https://www.your-domain.com}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - hulbert-network
+
+  frontend:
+    build:
+      context: ./domains/informatique/02-projects/portfolio/Portfolio/angular-portfolio
+      dockerfile: Dockerfile
+      target: production
+    container_name: hulbert-frontend
+    depends_on:
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - hulbert-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: hulbert-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./infra/nginx/prod.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - nginx_logs:/var/log/nginx
+    depends_on:
+      - frontend
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - hulbert-network
+
+  # Optional: pgAdmin for database management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: hulbert-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@hulbert.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin_password}
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    networks:
+      - hulbert-network
+    profiles:
+      - tools
+
+  # Optional: Mailhog for email testing
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: hulbert-mailhog
+    ports:
+      - "1025:1025"  # SMTP
+      - "8025:8025"  # Web UI
+    restart: unless-stopped
+    networks:
+      - hulbert-network
+    profiles:
+      - tools
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  nginx_logs:
+    driver: local
+  pgadmin_data:
+    driver: local
+
+networks:
+  hulbert-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

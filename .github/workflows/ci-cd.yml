@@ -1,0 +1,315 @@
+# Workflow CI/CD Principal - HULBERT-1
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+        - staging
+        - production
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  # Job 1: Tests et Validation
+  test-and-validate:
+    name: Tests et Validation
+    runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: hulbert_test_db
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+      
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        cache-dependency-path: domains/informatique/02-projects/portfolio/Portfolio/angular-portfolio/package-lock.json
+
+    - name: Install Python dependencies
+      run: |
+        cd backend
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-dev.txt
+
+    - name: Install Node.js dependencies
+      run: |
+        cd domains/informatique/02-projects/portfolio/Portfolio/angular-portfolio
+        npm ci
+
+    - name: Lint Python code
+      run: |
+        cd backend
+        flake8 app/ --max-line-length=100
+        black --check app/
+        isort --check-only app/
+
+    - name: Lint TypeScript code
+      run: |
+        cd domains/informatique/02-projects/portfolio/Portfolio/angular-portfolio
+        npm run lint
+
+    - name: Type check Python code
+      run: |
+        cd backend
+        mypy app/ --ignore-missing-imports
+
+    - name: Type check TypeScript code
+      run: |
+        cd domains/informatique/02-projects/portfolio/Portfolio/angular-portfolio
+        npm run type-check
+
+    - name: Run Python tests
+      env:
+        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/hulbert_test_db
+        JWT_SECRET: test-secret-key
+        ENVIRONMENT: testing
+      run: |
+        cd backend
+        python run_tests.py --coverage
+
+    - name: Run Angular tests
+      run: |
+        cd domains/informatique/02-projects/portfolio/Portfolio/angular-portfolio
+        npm run test -- --watch=false --browsers=ChromeHeadless
+
+    - name: Build Angular application
+      run: |
+        cd domains/informatique/02-projects/portfolio/Portfolio/angular-portfolio
+        npm run build --prod
+
+    - name: Upload coverage reports
+      uses: codecov/codecov-action@v3
+      with:
+        file: backend/coverage.xml
+        flags: backend
+        name: backend-coverage
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results
+        path: |
+          backend/test-results/
+          domains/informatique/02-projects/portfolio/Portfolio/angular-portfolio/coverage/
+
+  # Job 2: Build des Images Docker
+  build-images:
+    name: Build Images Docker
+    runs-on: ubuntu-latest
+    needs: test-and-validate
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Log in to Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=sha,prefix={{branch}}-
+          type=raw,value=latest,enable={{is_default_branch}}
+
+    - name: Build and push Backend image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: docker/Dockerfile.backend
+        target: production
+        push: true
+        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-backend:${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+    - name: Build and push Frontend image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: docker/Dockerfile.frontend
+        target: production
+        push: true
+        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-frontend:${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+  # Job 3: Déploiement Staging
+  deploy-staging:
+    name: Déploiement Staging
+    runs-on: ubuntu-latest
+    needs: build-images
+    if: github.ref == 'refs/heads/develop' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'staging')
+    environment: staging
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Deploy to Staging
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.STAGING_HOST }}
+        username: ${{ secrets.STAGING_USER }}
+        key: ${{ secrets.STAGING_SSH_KEY }}
+        script: |
+          cd /opt/hulbert-staging
+          git pull origin develop
+          docker-compose -f docker/docker-compose.prod.yml pull
+          docker-compose -f docker/docker-compose.prod.yml up -d
+          docker-compose -f docker/docker-compose.prod.yml exec backend alembic upgrade head
+
+    - name: Run smoke tests
+      run: |
+        sleep 30
+        curl -f http://${{ secrets.STAGING_HOST }}/api/health || exit 1
+        curl -f http://${{ secrets.STAGING_HOST }}/ || exit 1
+
+    - name: Notify deployment
+      uses: 8398a7/action-slack@v3
+      if: always()
+      with:
+        status: ${{ job.status }}
+        channel: '#deployments'
+        webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        fields: repo,message,commit,author,action,eventName,ref,workflow
+
+  # Job 4: Déploiement Production
+  deploy-production:
+    name: Déploiement Production
+    runs-on: ubuntu-latest
+    needs: [build-images, deploy-staging]
+    if: github.ref == 'refs/heads/main' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'production')
+    environment: production
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Create backup
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.PRODUCTION_HOST }}
+        username: ${{ secrets.PRODUCTION_HOST }}
+        key: ${{ secrets.PRODUCTION_SSH_KEY }}
+        script: |
+          cd /opt/hulbert-production
+          ./docker/scripts/deploy-prod.sh backup
+
+    - name: Deploy to Production
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.PRODUCTION_HOST }}
+        username: ${{ secrets.PRODUCTION_USER }}
+        key: ${{ secrets.PRODUCTION_SSH_KEY }}
+        script: |
+          cd /opt/hulbert-production
+          git pull origin main
+          docker-compose -f docker/docker-compose.prod.yml pull
+          docker-compose -f docker/docker-compose.prod.yml up -d
+          docker-compose -f docker/docker-compose.prod.yml exec backend alembic upgrade head
+
+    - name: Run health checks
+      run: |
+        sleep 60
+        curl -f http://${{ secrets.PRODUCTION_HOST }}/api/health || exit 1
+        curl -f http://${{ secrets.PRODUCTION_HOST }}/ || exit 1
+
+    - name: Run performance tests
+      run: |
+        cd ci-cd/scripts
+        chmod +x performance-test.sh
+        ./performance-test.sh ${{ secrets.PRODUCTION_HOST }}
+
+    - name: Notify deployment
+      uses: 8398a7/action-slack@v3
+      if: always()
+      with:
+        status: ${{ job.status }}
+        channel: '#deployments'
+        webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        fields: repo,message,commit,author,action,eventName,ref,workflow
+
+  # Job 5: Rollback (en cas d'échec)
+  rollback:
+    name: Rollback
+    runs-on: ubuntu-latest
+    needs: [deploy-production]
+    if: failure() && github.ref == 'refs/heads/main'
+
+    steps:
+    - name: Rollback Production
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.PRODUCTION_HOST }}
+        username: ${{ secrets.PRODUCTION_USER }}
+        key: ${{ secrets.PRODUCTION_SSH_KEY }}
+        script: |
+          cd /opt/hulbert-production
+          ./docker/scripts/rollback.sh
+
+    - name: Notify rollback
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        channel: '#deployments'
+        webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        fields: repo,message,commit,author,action,eventName,ref,workflow

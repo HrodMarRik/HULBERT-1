@@ -1,0 +1,75 @@
+{
+  "provider": "openai",
+  "api_key": "OPENAI_API_KEY",
+  "model": "gpt-4-turbo-preview",
+  "max_tokens": 4000,
+  "temperature": 0.7,
+  "fallback_provider": "claude",
+  "claude": {
+    "api_key": "CLAUDE_API_KEY",
+    "model": "claude-3-sonnet-20240229",
+    "max_tokens": 4000,
+    "temperature": 0.7
+  },
+  "openai": {
+    "api_key": "OPENAI_API_KEY",
+    "model": "gpt-4-turbo-preview",
+    "max_tokens": 4000,
+    "temperature": 0.7,
+    "timeout": 30000
+  },
+  "rate_limits": {
+    "requests_per_minute": 60,
+    "tokens_per_minute": 150000,
+    "max_concurrent_requests": 5
+  },
+  "retry": {
+    "max_attempts": 3,
+    "base_delay": 1000,
+    "max_delay": 10000,
+    "backoff_factor": 2
+  },
+  "content_limits": {
+    "max_source_length": 50000,
+    "max_prompt_length": 100000,
+    "max_response_length": 8000
+  },
+  "domains": {
+    "informatique": {
+      "specialized_prompts": true,
+      "technical_depth": "high",
+      "code_examples": true,
+      "security_focus": true
+    },
+    "finance": {
+      "specialized_prompts": true,
+      "technical_depth": "medium",
+      "code_examples": false,
+      "security_focus": false
+    },
+    "economie": {
+      "specialized_prompts": true,
+      "technical_depth": "medium",
+      "code_examples": false,
+      "security_focus": false
+    },
+    "entrepreneuriat": {
+      "specialized_prompts": true,
+      "technical_depth": "low",
+      "code_examples": false,
+      "security_focus": false
+    },
+    "politique": {
+      "specialized_prompts": true,
+      "technical_depth": "low",
+      "code_examples": false,
+      "security_focus": false
+    },
+    "sciences": {
+      "specialized_prompts": true,
+      "technical_depth": "high",
+      "code_examples": true,
+      "security_focus": false
+    }
+  }
+}

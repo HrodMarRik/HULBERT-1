@@ -1,0 +1,1873 @@
+
+<div class="ajaxbloc bind-ajaxReload" data-ajax-env="akkJV8AU+3AkPWp/+VGT8CdVogRxzszMDq7eOmuj7fij5yHTX29Jg0EVygyy0bF+oi2GH6uGHgkFz/7l74ZtfUjtF/8sbvUCifi92LF58y7Nc2P3uzPr2SPxjl7miKp42cLSXdnYtRTwVg4sUVJDcNSzvKtjnS0CPIDWk3o8kqR8fOsExe9cxMgsVZQzUEL8Djgfz/uDXkKykS1zUcq+iB3Kal3w2U8cDzsYRCjURk47b6ycjb8n4KtFliDivCor4OYGv4ZLCA==" data-origin="/fr/Challenges/Cracking/">
+<div class="small-12 columns">
+<div class="tile">
+<div class="t-body tb-padding">
+<h1 class="crayon rubrique-titre-69 "><img src="IMG/logo/rubon69.svg?1637496508" alt="Cracking" width="48" height="48" class="vmiddle" itemprop="image">&nbsp;<span itemprop="headline name">Cracking</span></h1>
+<h3 class="crayon rubrique-descriptif-69 " itemprop="description">Ces challenges permettent de comprendre le sens du terme «&nbsp;langage compilé&nbsp;». Ce sont des fichiers binaires à décortiquer pour aller chercher les instructions bas niveau permettant de répondre au problème posé.
+</h3>
+<div class="texte crayon rubrique-texte-69 " itemprop="text"><p>Prérequis&nbsp;:
+<br><span class="spip-puce ltr"><b>–</b></span>&nbsp;Connaitre les langages assembleur (x86, ARM, <i>etc.</i>)&nbsp;;
+<br><span class="spip-puce ltr"><b>–</b></span>&nbsp;Connaitre les différents formats d’exécutables (ELF, PE, <i>etc.</i>)&nbsp;;
+<br><span class="spip-puce ltr"><b>–</b></span>&nbsp;Connaitre et maitriser un désassembleur/débogueur.</p></div>
+</div>
+</div>
+</div>
+<div class="ajaxbloc ajax-id-liste_challenge bind-ajaxReload" data-ajax-env="gkmRU8cE53B0qim5XYH+hRoxb87kTe0HsChkxIt4KaC3mviSKeoIAKkZAWCJ5768rBFgX2qBbPL4THmkIHVgg/d57bk0HmbkeOwTWg5y8KfuYCKHOApkvYgu9lIARlQHcM0Qtd4melkpV6m5xhQsK2NtjLGnrL/UZO+ZGPYwkSTgn49Dl8NI//Tov51GzZqmnc4SrvyrVmtHXkQsSc7DzhHNatvpx08cbjvY4RB9KubkFhhOSgxKivyOMM8PxCkPOvv9jpfB9Cs6oCgluYIf0XqNhbtZXMb0Tz7YX5VdNeNwpIyXohjKem4HCwooZT31X7/j" data-origin="/fr/Challenges/Cracking/">
+<script> 
+function reload_liste_challenge(){
+ajaxReload('liste_challenge_inc',{args:{id_rubrique:69,titre_co:$('#titre_co').val()},history:false});
+}
+$(document).ready(function(){
+var t = null;
+$("#titre_co").on('input propertychange paste', function() {
+if (t) clearTimeout(t);
+t = setTimeout(reload_liste_challenge, 250);
+});
+});
+</script>
+<div class="small-12 columns">
+<div class="tile">
+<div class="t-body tb-padding">
+<div class="right">
+<form id="filtrer_liste_challenge" action="/fr/Challenges/Cracking/#liste_challenge" method="get">
+<input type="search" id="titre_co" name="titre_co" placeholder="Filtrer">
+</form>
+</div>                
+<div class="ajaxbloc ajax-id-liste_challenge_inc bind-ajaxReload" data-ajax-env="UlWZN8AU5zYkep6M1+NayNEQcm3zSOhKEM7GCtmlaoXex4M3RW9ip0yYPpwjyoKXUUhxPlJ+Pt60w11kSOdGPIX5UO8ELd9N2TeD10BOH252lltVF+9jjphwy6f6GXA8a7aht9gtz4eItC+YSow7MyO91fLljwA3TsSkTKHbKck+dMSKX1fOTwXS4kAjpOveFqSyFV87hvkJZA==" data-origin="/fr/Challenges/Cracking/">
+<h1 id="liste_challenge">
+<img src="IMG/logo/rubon5.svg?1637496507" alt="challenges" width="48" height="48" class="vmiddle">&nbsp;<b class="color1">70</b>&nbsp;Challenges
+</h1>
+<a id="pagination_co" class="pagination_ancre"></a>
+<table class="text-center" style="width: 100%">
+<thead>
+<tr class="row_first">
+<td>Résultats</td>
+<td><a href="/fr/Challenges/Cracking/Basic-crackme?lang=fr&amp;tri_co=titre" class="ajax bind-ajax">Nom</a></td>
+<td class="hide-for-small-only"><a href="/fr/Challenges/Cracking/Basic-crackme?lang=fr&amp;tri_co=nombre_validation" class="ajax bind-ajax">Validations</a></td>
+<td><a href="/fr/Challenges/Cracking/Basic-crackme?lang=fr&amp;tri_co=score" class="ajax bind-ajax">Nombre de points</a>&nbsp;&nbsp;<a class="mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Flegende&amp;lang=fr&amp;ajah=1 #score" title="Explications sur les scores" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Flegende&amp;lang=fr&amp;ajah=1 #score"><img src="squelettes/img/question_mark.svg" width="16" height="16" alt="Explications sur les scores"></a></td>
+<td class="text-center show-for-medium-up"><a href="/fr/Challenges/Cracking/Basic-crackme?lang=fr&amp;tri_co=id_mot" class="ajax bind-ajax">Difficulté</a>&nbsp;&nbsp;<a class="mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Flegende&amp;lang=fr&amp;ajah=1 #difficulte" title="Difficulté" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Flegende&amp;lang=fr&amp;ajah=1 #difficulte"><img src="squelettes/img/question_mark.svg" width="16" height="16" alt="Difficulté"></a></td>
+<td class="text-center show-for-large-up"><a href="/fr/Challenges/Cracking/Basic-crackme?lang=fr&amp;tri_co=auteurs" class="ajax bind-ajax">Auteur</a></td>
+<td class="show-for-medium-up"><a href="/fr/Challenges/Cracking/Basic-crackme?lang=fr&amp;tri_co=note_ponderee" class="ajax bind-ajax">Note</a>&nbsp;&nbsp;<a class="mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Flegende&amp;lang=fr&amp;ajah=1 #note" title="Notation" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Flegende&amp;lang=fr&amp;ajah=1 #note"><img src="squelettes/img/question_mark.svg" width="16" height="16" alt="Notation"></a></td>
+<td class="show-for-large-up"><a href="/fr/Challenges/Cracking/Basic-crackme?lang=fr&amp;tri_co=nombre_solution" class="ajax bind-ajax">Solution</a></td>
+<td class="show-for-large-up"><a href="/fr/Challenges/Cracking/Basic-crackme?lang=fr&amp;tri_co=date_publication" class="ajax bind-ajax">Date</a></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x86-0-protection" title="Premier challenge de cracking, programme rédigé en C avec vi et compilé avec GCC32.">ELF x86 - 0 protection</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 14%; background-color: #ff4b4b;">14%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=41&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=41&amp;lang=fr&amp;ajah=1">50068</a>
+</span>
+</td>
+<td>5</td>
+<td class="show-for-medium-up">
+<a href="tag/Tres-facile?lang=fr" title="Très facile : Premier niveau des challenges"><span class="difficulte difficulte1   difficulte1a" style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de g0uZ" href="/g0uZ?lang=fr">g0uZ</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">11 février 2006</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x86-Basique" title="Encore un exe à cracker, toujours compilé avec gcc32 sur x86">ELF x86 - Basique</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 11%; background-color: #ff4b4b;">11%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=43&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=43&amp;lang=fr&amp;ajah=1">40424</a>
+</span>
+</td>
+<td>5</td>
+<td class="show-for-medium-up">
+<a href="tag/Tres-facile?lang=fr" title="Très facile : Premier niveau des challenges"><span class="difficulte difficulte1   difficulte1a" style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de g0uZ" href="/g0uZ?lang=fr">g0uZ</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">6 janvier 2011</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PE-x86-0-protection" title="Épreuve issue du CTF GreHack 2012">PE x86 - 0 protection</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 7%; background-color: #ff4b4b;">7%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=271&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=271&amp;lang=fr&amp;ajah=1">22816</a>
+</span>
+</td>
+<td>5</td>
+<td class="show-for-medium-up">
+<a href="tag/Tres-facile?lang=fr" title="Très facile : Premier niveau des challenges"><span class="difficulte difficulte1   difficulte1a" style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de alejandr0" href="/alejandr0?lang=fr">alejandr0</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">11 novembre 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-C-0-protection" title="std::string">ELF C++ - 0 protection</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 4%; background-color: #ff4b4b;">4%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1006&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1006&amp;lang=fr&amp;ajah=1">12253</a>
+</span>
+</td>
+<td>10</td>
+<td class="show-for-medium-up">
+<a href="tag/Tres-facile?lang=fr" title="Très facile : Premier niveau des challenges"><span class="difficulte difficulte1   difficulte1a" style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de sourcePerrier" href="/sourcePerrier?lang=fr">sourcePerrier</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">13 juillet 2016</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Godot-0-protection" title="Le crâne et le cimetière">Godot - 0 protection</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3698&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3698&amp;lang=fr&amp;ajah=1">2963</a>
+</span>
+</td>
+<td>10</td>
+<td class="show-for-medium-up">
+<a href="tag/Tres-facile?lang=fr" title="Très facile : Premier niveau des challenges"><span class="difficulte difficulte1   difficulte1a" style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Elf" href="/Elf-247571?lang=fr">Elf</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">10 juin 2022</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PE-DotNet-0-protection" title="Code managé">PE DotNet - 0 protection</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 3%; background-color: #ff4b4b;">3%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=421&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=421&amp;lang=fr&amp;ajah=1">11171</a>
+</span>
+</td>
+<td>10</td>
+<td class="show-for-medium-up">
+<a href="tag/Tres-facile?lang=fr" title="Très facile : Premier niveau des challenges"><span class="difficulte difficulte1   difficulte1a" style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Geluchat" href="/Geluchat?lang=fr">Geluchat</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">15 septembre 2014</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/APK-Introduction" title="Petite entrée dans le monde d'Android...">APK - Introduction</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3795&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3795&amp;lang=fr&amp;ajah=1">2370</a>
+</span>
+</td>
+<td>15</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de algorab" href="/algorab?lang=fr">algorab</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">17 octobre 2022</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-MIPS-Basic-Crackme" title="En statique">ELF MIPS - Basic Crackme</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 2%; background-color: #ff4b4b;">2%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1733&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1733&amp;lang=fr&amp;ajah=1">4814</a>
+</span>
+</td>
+<td>15</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de sar" href="/s4r?lang=fr">sar</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">9 juillet 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x64-Golang-basique" title="GO GO GO !">ELF x64 - Golang basique</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1757&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1757&amp;lang=fr&amp;ajah=1">3305</a>
+</span>
+</td>
+<td>15</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de jenaye" href="/jenaye?lang=fr">jenaye</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">8 novembre 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x86-Fake-Instructions" title="Ce crackme est de niveau intermédiaire, il comporte tout de même de petits pièges et des &quot;fake instructions&quot;. ">ELF x86 - Fake Instructions</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 3%; background-color: #ff4b4b;">3%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=72&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=72&amp;lang=fr&amp;ajah=1">9426</a>
+</span>
+</td>
+<td>15</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de kmkz" href="/kmkz?lang=fr">kmkz</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">19 février 2010</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x86-Ptrace" title="Programme rédigé en C, compilé avec GCC32 4.3.4">ELF x86 - Ptrace</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 3%; background-color: #ff4b4b;">3%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=68&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=68&amp;lang=fr&amp;ajah=1">8314</a>
+</span>
+</td>
+<td>15</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de g0uZ" href="/g0uZ?lang=fr">g0uZ</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">26 novembre 2009</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Godot-Bytecode" title="Plus si clair que ça...">Godot - Bytecode</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3699&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3699&amp;lang=fr&amp;ajah=1">1349</a>
+</span>
+</td>
+<td>15</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Elf" href="/Elf-247571?lang=fr">Elf</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">2</td>
+<td class="show-for-large-up">10 juin 2022</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/WASM-Introduction" title="Parlez-vous WebAssembly ?">WASM - Introduction</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2842&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2842&amp;lang=fr&amp;ajah=1">1654</a>
+</span>
+</td>
+<td>15</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Cyxo" href="/Cyxo?lang=fr">Cyxo</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">26 mars 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/APK-Flutter-Debug" title="Attention au mode de build">APK - Flutter Debug</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3001&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3001&amp;lang=fr&amp;ajah=1">745</a>
+</span>
+</td>
+<td>20</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de extiop" href="/extiop?lang=fr">extiop</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">19 juin 2022</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-ARM-Basic-Crackme" title="Temps constant">ELF ARM - Basic Crackme</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 2%; background-color: #ff4b4b;">2%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1292&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1292&amp;lang=fr&amp;ajah=1">4681</a>
+</span>
+</td>
+<td>20</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de 0xmitsurugi" href="/0xmitsurugi?lang=fr">0xmitsurugi</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">8</td>
+<td class="show-for-large-up">13 juillet 2016</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x64-Basic-KeygenMe" title="Easy to reverse...">ELF x64 - Basic KeygenMe</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=928&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=928&amp;lang=fr&amp;ajah=1">1940</a>
+</span>
+</td>
+<td>20</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de fr0g" href="/fr0g?lang=fr">fr0g</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">2 septembre 2020</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Gestion-de-sauvegarde-sous-Unity3D" title="Trouve le lieu de l'attaque">Gestion de sauvegarde sous Unity3D</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2271&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2271&amp;lang=fr&amp;ajah=1">285</a>
+</span>
+</td>
+<td>20</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Lumy" href="/Lumy-351893?lang=fr">Lumy</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">21 juillet 2023</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Godot-Mono" title="Marre de GDScript">Godot - Mono</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3700&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3700&amp;lang=fr&amp;ajah=1">870</a>
+</span>
+</td>
+<td>20</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Elf" href="/Elf-247571?lang=fr">Elf</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">2</td>
+<td class="show-for-large-up">10 juin 2022</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PE-DotNet-Basic-Anti-Debug" title="Trouvez comment contourner l'anti-debugger ou analysez ce programme statiquement ">PE DotNet - Basic Anti-Debug</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2267&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2267&amp;lang=fr&amp;ajah=1">1756</a>
+</span>
+</td>
+<td>20</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de nqnt" href="/nqnt?lang=fr">nqnt</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">9</td>
+<td class="show-for-large-up">24 mars 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PE-DotNet-Basic-Crackme" title="Pas si dur que ça...">PE DotNet - Basic Crackme</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2328&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2328&amp;lang=fr&amp;ajah=1">1365</a>
+</span>
+</td>
+<td>20</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de nqnt" href="/nqnt?lang=fr">nqnt</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">14 avril 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PYC-ByteCode" title="Un crackme compilé">PYC - ByteCode</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 2%; background-color: #ff4b4b;">2%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=359&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=359&amp;lang=fr&amp;ajah=1">5533</a>
+</span>
+</td>
+<td>20</td>
+<td class="show-for-medium-up">
+<a href="tag/Facile?lang=fr" title="Facile : Deuxième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2   difficulte2a" style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Thanat0s" href="/Thanat0s?lang=fr">Thanat0s</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">3 juillet 2013</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Basic-crackme" title="Ne vous laissez pas abattre par ce pauvre binaire">Basic&nbsp;? crackme</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=4145&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=4145&amp;lang=fr&amp;ajah=1">395</a>
+</span>
+</td>
+<td>25</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Dvorhack" href="/Viel?lang=fr">Dvorhack</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">14 mars 2025</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x86-Pas-de-points-d-arret-logiciels" title="Il n'aime pas que l'on modifie le code.">ELF x86 - Pas de points d’arrêt logiciels</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 2%; background-color: #ff4b4b;">2%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=375&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=375&amp;lang=fr&amp;ajah=1">4191</a>
+</span>
+</td>
+<td>25</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de yodzeb" href="/yodzeb?lang=fr">yodzeb</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">2 octobre 2013</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Lua-Bytecode" title="Lua bytecode, version 5.1">Lua - Bytecode</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2151&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2151&amp;lang=fr&amp;ajah=1">955</a>
+</span>
+</td>
+<td>25</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Bernstein" href="/Bernstein?lang=fr">Bernstein</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">4</td>
+<td class="show-for-large-up">25 mars 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/MachO-x64-keygenme-or-not" title="Lisez le code et trouvez le bon chemin">MachO x64 - keygenme or not</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1345&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1345&amp;lang=fr&amp;ajah=1">1633</a>
+</span>
+</td>
+<td>25</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de /bin/ls" href="/lsirigna42-21328?lang=fr">/bin/ls</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note3.svg?1640086076" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">14 avril 2017</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-ARM-crackme-1337" title="Lorsque le binaire vous renvoie 1337, le mot de passe est correct">ELF ARM - crackme 1337</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=122&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=122&amp;lang=fr&amp;ajah=1">2589</a>
+</span>
+</td>
+<td>30</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note3.svg?1640086076" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">9 janvier 2011</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x86-CrackPass" title="Possiblité de bypass l'algorithme ?">ELF x86 - CrackPass</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 2%; background-color: #ff4b4b;">2%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=118&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=118&amp;lang=fr&amp;ajah=1">5545</a>
+</span>
+</td>
+<td>30</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Tosh" href="/Tosh?lang=fr">Tosh</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">8</td>
+<td class="show-for-large-up">2 janvier 2011</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x86-ExploitMe" title="bof bof...">ELF x86 - ExploitMe</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 2%; background-color: #ff4b4b;">2%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=78&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=78&amp;lang=fr&amp;ajah=1">4663</a>
+</span>
+</td>
+<td>30</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de kmkz" href="/kmkz?lang=fr">kmkz</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">9</td>
+<td class="show-for-large-up">6 mars 2010</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x86-Random-Crackme" title="">ELF x86 - Random Crackme</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=74&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=74&amp;lang=fr&amp;ajah=1">3711</a>
+</span>
+</td>
+<td>30</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de kmkz" href="/kmkz?lang=fr">kmkz</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">9</td>
+<td class="show-for-large-up">28 février 2010</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/GB-Basic-GameBoy-crackme" title="Une architecture exotique !">GB - Basic GameBoy crackme</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1755&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1755&amp;lang=fr&amp;ajah=1">1449</a>
+</span>
+</td>
+<td>30</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de jambon69" href="/jambon69?lang=fr">jambon69</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">14 septembre 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PDF-Javascript" title="Ce challenge est issu des épreuves Hack.lu 2011">PDF - Javascript</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=236&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=236&amp;lang=fr&amp;ajah=1">1688</a>
+</span>
+</td>
+<td>30</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de koma" href="/koma?lang=fr">koma</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note3.svg?1640086076" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">14 février 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PE-x86-Xor-Madness" title="xor, sub, call, ret et rien d'autre">PE x86 - Xor Madness</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1630&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1630&amp;lang=fr&amp;ajah=1">971</a>
+</span>
+</td>
+<td>30</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_0minirezo" title="profil de ENOENT" href="/ENOENT?lang=fr">ENOENT</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">4</td>
+<td class="show-for-large-up">17 juillet 2019</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Powershell-DeObfuscation" title="Trigger the AV">Powershell DeObfuscation</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2287&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2287&amp;lang=fr&amp;ajah=1">631</a>
+</span>
+</td>
+<td>30</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de hat.time" href="/hat-time?lang=fr">hat.time</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">2 avril 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-ARM-Crypted" title="Google est ton ami.">ELF ARM - Crypted</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=257&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=257&amp;lang=fr&amp;ajah=1">665</a>
+</span>
+</td>
+<td>35</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de koma" href="/koma?lang=fr">koma</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note2.svg?1640086068" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">4 septembre 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x64-Automatisation-du-crackme" title="Trouver le basic block, automatiser le crackme.">ELF x64 - Automatisation du crackme</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1688&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1688&amp;lang=fr&amp;ajah=1">1220</a>
+</span>
+</td>
+<td>35</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de 0xmitsurugi" href="/0xmitsurugi?lang=fr">0xmitsurugi</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">14 août 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/EVM-Bytecode" title="Tout est public dans la blockchain Ethereum">EVM - Bytecode</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3896&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3896&amp;lang=fr&amp;ajah=1">38</a>
+</span>
+</td>
+<td>35</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Elf" href="/Elf-247571?lang=fr">Elf</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">14 mars 2025</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Godot-Modele-3D" title="Le dragon rose">Godot - Modèle 3D</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3701&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3701&amp;lang=fr&amp;ajah=1">537</a>
+</span>
+</td>
+<td>35</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Elf" href="/Elf-247571?lang=fr">Elf</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">10 juin 2022</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/NRO-ARM-Switch-homebrew" title="Nintendo Relocatable Object">NRO ARM - Switch homebrew</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3894&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3894&amp;lang=fr&amp;ajah=1">137</a>
+</span>
+</td>
+<td>35</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Elf" href="/Elf-247571?lang=fr">Elf</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">21 juillet 2023</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PE-x86-SEHVEH" title="Un crackme d'exception !">PE x86 - SEHVEH</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=322&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=322&amp;lang=fr&amp;ajah=1">1331</a>
+</span>
+</td>
+<td>35</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Thanat0s" href="/Thanat0s?lang=fr">Thanat0s</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">3 mai 2013</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/APK-Anti-debug" title="Jouons à cache-cache, challenge issu de Hashdays 2012">APK - Anti-debug</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=275&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=275&amp;lang=fr&amp;ajah=1">2885</a>
+</span>
+</td>
+<td>40</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de cryptax" href="/cryptax?lang=fr">cryptax</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note3.svg?1640086076" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">18 décembre 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/APK-Insomni-Droid" title="Ce challenge est issu des épreuves Insomni'hack 2012.">APK - Insomni’Droid</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=242&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=242&amp;lang=fr&amp;ajah=1">1768</a>
+</span>
+</td>
+<td>40</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de cryptax" href="/cryptax?lang=fr">cryptax</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note2.svg?1640086068" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">12 octobre 2022</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x64-Rust-backdoor" title="Pas de panique, ça va bien se passer !">ELF x64 - Rust backdoor</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3895&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3895&amp;lang=fr&amp;ajah=1">195</a>
+</span>
+</td>
+<td>40</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_1comite" title="profil de Elf" href="/Elf-247571?lang=fr">Elf</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">21 juillet 2023</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x64-Rust-Crackme" title="Cactus rustique">ELF x64 - Rust Crackme</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3673&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3673&amp;lang=fr&amp;ajah=1">202</a>
+</span>
+</td>
+<td>40</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de extiop" href="/extiop?lang=fr">extiop</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">4</td>
+<td class="show-for-large-up">17 octobre 2022</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PE-x64-UEFI-Secure-Boot" title="Unfair and Extremely Fucked up Interface">PE x64 - UEFI Secure Boot</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2316&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2316&amp;lang=fr&amp;ajah=1">169</a>
+</span>
+</td>
+<td>40</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Solden" href="/Solden?lang=fr">Solden</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">4</td>
+<td class="show-for-large-up">10 mai 2023</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Root-My-Droid" title="Application suspicieuse">APK - Root My Droid</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=112&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=112&amp;lang=fr&amp;ajah=1">1240</a>
+</span>
+</td>
+<td>45</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de koma" href="/koma?lang=fr">koma</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">12 octobre 2022</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x64-Nanomites-Introduction" title="Où sont mes instructions ?">ELF x64 - Nanomites - Introduction</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1594&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1594&amp;lang=fr&amp;ajah=1">844</a>
+</span>
+</td>
+<td>45</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Phenol" href="/Phenol?lang=fr">Phenol</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">4 mars 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x86-Anti-debug" title="Un cracking pour Linux, implémentant quelques techniques anti-reversing.">ELF x86 - Anti-debug</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=252&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=252&amp;lang=fr&amp;ajah=1">1956</a>
+</span>
+</td>
+<td>45</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Tosh" href="/Tosh?lang=fr">Tosh</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">3 juin 2012</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PE-DotNet-KeygenMe" title="Trouvez la clef de l'utilisateur &quot;Root-Me&quot;">PE DotNet - KeygenMe</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2269&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2269&amp;lang=fr&amp;ajah=1">308</a>
+</span>
+</td>
+<td>45</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de nqnt" href="/nqnt?lang=fr">nqnt</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">14 avril 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PE-x64-Bazar-dans-les-tables" title="Les apparences sont parfois trompeuses.">PE x64 - Bazar dans les tables</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=4063&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=4063&amp;lang=fr&amp;ajah=1">116</a>
+</span>
+</td>
+<td>45</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_5pre" title="profil de 0xTRIKKSS" href="/0xTRIKKSS?lang=fr">0xTRIKKSS</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">0</td>
+<td class="show-for-large-up">28 décembre 2023</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PE-x86-AutoPE" title="Plongez vous dans le cracking sous windows avec ce Crackme codé en autoit. L'EOF n'est que le début, la source te mènera aux WTF...">PE x86 - AutoPE</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=158&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=158&amp;lang=fr&amp;ajah=1">901</a>
+</span>
+</td>
+<td>45</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Gr4ph0s" href="/Gr4ph0s?lang=fr">Gr4ph0s</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">5 août 2011</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PYC-Self-Modifying-Byte-Code" title="C'est aussi possible en python ?!">PYC - Self Modifying (Byte)Code</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=4408&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=4408&amp;lang=fr&amp;ajah=1">118</a>
+</span>
+</td>
+<td>45</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Njörd" href="/Njord?lang=fr">Njörd</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">28 décembre 2023</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PYC-Snakeygen" title="Ssssssssssssss.">PYC - Snakeygen</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3880&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3880&amp;lang=fr&amp;ajah=1">205</a>
+</span>
+</td>
+<td>45</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_5pre" title="profil de erk3" href="/erk3?lang=fr">erk3</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">5</td>
+<td class="show-for-large-up">17 octobre 2022</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x86-KeygenMe" title="">ELF x86 - KeygenMe</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=156&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=156&amp;lang=fr&amp;ajah=1">954</a>
+</span>
+</td>
+<td>50</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de int_0x80" href="/int_0x80?lang=fr">int_0x80</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">20 juillet 2011</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/HackerMan" title="Rootez vos ennemis avec une bonne analyse dynamique">HackerMan</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2848&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2848&amp;lang=fr&amp;ajah=1">94</a>
+</span>
+</td>
+<td>50</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de LordRoke" href="/LordRoke?lang=fr">LordRoke</a> ,  
+<a class="txt_6forum" title="profil de Stealer" href="/Stealer?lang=fr">Stealer</a> ,  
+<a class="txt_6forum" title="profil de Sengengie" href="/Sengengie-122337?lang=fr">Sengengie</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">10 mai 2023</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Unity-Mono-Basic-Game-Hacking" title="Is it just me, or is this game lookin' kinda THICC !?">Unity - Mono - Basic Game Hacking</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3175&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3175&amp;lang=fr&amp;ajah=1">154</a>
+</span>
+</td>
+<td>50</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de 0x0ff" href="/0x0ff-7247?lang=fr">0x0ff</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">17 octobre 2022</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/WASM-Trouvez-le-PNJ" title="C'est comme chercher une aiguille dans une botte de foin">WASM - Trouvez le PNJ</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2841&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2841&amp;lang=fr&amp;ajah=1">288</a>
+</span>
+</td>
+<td>50</td>
+<td class="show-for-medium-up">
+<a href="tag/Moyen?lang=fr" title="Moyen : Troisième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3   difficulte3a" style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Cyxo" href="/Cyxo?lang=fr">Cyxo</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">26 mars 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PE-DotNet-Memory-Protect" title="Protection custom efficace ?">PE DotNet - Memory Protect</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3808&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3808&amp;lang=fr&amp;ajah=1">26</a>
+</span>
+</td>
+<td>55</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_5pre" title="profil de Vozec" href="/Vozec?lang=fr">Vozec</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">0</td>
+<td class="show-for-large-up">14 mars 2025</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Bash-VM" title="MaSHine Virtuelle">Bash - VM</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1958&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1958&amp;lang=fr&amp;ajah=1">348</a>
+</span>
+</td>
+<td>60</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de govlog" href="/govlog?lang=fr">govlog</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">25 mars 2021</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x64-KeyGenMe" title="Every bit counts">ELF x64 - KeyGenMe</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2283&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2283&amp;lang=fr&amp;ajah=1">189</a>
+</span>
+</td>
+<td>60</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de rene-d" href="/rene-d?lang=fr">rene-d</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">12 novembre 2020</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x64-Anti-debug-et-equations" title="Weird anti-debug techniques">ELF x64 - Anti-debug et equations</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1293&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1293&amp;lang=fr&amp;ajah=1">452</a>
+</span>
+</td>
+<td>65</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de 0xmitsurugi" href="/0xmitsurugi?lang=fr">0xmitsurugi</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">6</td>
+<td class="show-for-large-up">18 juillet 2016</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Unity-IL2CPP-Basic-Game-Hacking" title="Beware, something is lurking in the shadows...">Unity - IL2CPP - Basic Game Hacking</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3746&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3746&amp;lang=fr&amp;ajah=1">72</a>
+</span>
+</td>
+<td>65</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de 0x0ff" href="/0x0ff-7247?lang=fr">0x0ff</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">21 juillet 2023</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x64-Nanomites" title="Nanomites everywhere">ELF x64 - Nanomites</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1596&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1596&amp;lang=fr&amp;ajah=1">447</a>
+</span>
+</td>
+<td>70</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Phenol" href="/Phenol?lang=fr">Phenol</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">4 mars 2018</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x86-Packed" title="">ELF x86 - Packed</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=174&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=174&amp;lang=fr&amp;ajah=1">458</a>
+</span>
+</td>
+<td>70</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Tosh" href="/Tosh?lang=fr">Tosh</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note3.svg?1640086076" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">18 octobre 2011</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PE-x86-RunPE" title="Technique de packing Windows">PE x86 - RunPE</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=384&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=384&amp;lang=fr&amp;ajah=1">1063</a>
+</span>
+</td>
+<td>75</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Thanat0s" href="/Thanat0s?lang=fr">Thanat0s</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">16 décembre 2013</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/PE32-KeygenMe" title="Rien n'est anodin, rien n'est secondaire">PE32+ - KeygenMe</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=4360&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=4360&amp;lang=fr&amp;ajah=1">22</a>
+</span>
+</td>
+<td>85</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Redouane" href="/Redouane-28301?lang=fr">Redouane</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">0</td>
+<td class="show-for-large-up">14 mars 2025</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x86-VM" title="Machine Virtuelle">ELF x86 - VM</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=351&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=351&amp;lang=fr&amp;ajah=1">651</a>
+</span>
+</td>
+<td>90</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Thanat0s" href="/Thanat0s?lang=fr">Thanat0s</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">10</td>
+<td class="show-for-large-up">16 juin 2013</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/ELF-x64-Hidden-Control-Flow" title="Control Flow Graph Flattening ">ELF x64 - Hidden Control Flow</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2285&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2285&amp;lang=fr&amp;ajah=1">166</a>
+</span>
+</td>
+<td>100</td>
+<td class="show-for-medium-up">
+<a href="tag/Difficile?lang=fr" title="Difficile : Quatrième niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4   difficulte4a" style="height: 0.8rem;"></span><span class="difficulte difficulte36 " style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de so3" href="/so3?lang=fr">so3</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">7</td>
+<td class="show-for-large-up">18 novembre 2020</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Ringgit" title="Nanomites">Ringgit</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2089&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=2089&amp;lang=fr&amp;ajah=1">110</a>
+</span>
+</td>
+<td>110</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_5pre" title="profil de Cryptanalyse" href="/Cryptanalyse?lang=fr">Cryptanalyse</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note5.svg?1640086090" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">6 octobre 2019</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/Voracious-Nanomites" title="Dans &quot;nanomites&quot;, il y a &quot;mites&quot;">Voracious Nanomites</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3882&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=3882&amp;lang=fr&amp;ajah=1">28</a>
+</span>
+</td>
+<td>110</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_6forum" title="profil de Kasen" href="/Kasen?lang=fr">Kasen</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">1</td>
+<td class="show-for-large-up">21 juillet 2023</td>
+</tr>
+<tr>
+<td>
+<img class="vmiddle" src="squelettes/img/pas_valide.svg" width="12" height="12" alt="pas_valide">
+</td>
+<td class="text-left">
+<a href="fr/Challenges/Cracking/White-Box-Cryptography-2" title="Reverse and crypto">White-Box Cryptography #2</a>
+</td>
+<td class="hide-for-small-only text-left">
+<span class="gras left text-left" style="display: inline-block; border-radius: 5px; padding: 2px; width: 1%; background-color: #ff4b4b;">1%</span>
+<span class="right">
+<a class="txs gris mediabox pageajax cboxElement hasbox" data-box-type="ajax" href="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1930&amp;lang=fr&amp;ajah=1" title="Qui a validé ?" data-href-popin="https://www.root-me.org/?page=structure&amp;inc=inclusions%2Fqui_a_valid&amp;id_r=69&amp;id_c=1930&amp;lang=fr&amp;ajah=1">76</a>
+</span>
+</td>
+<td>130</td>
+<td class="show-for-medium-up">
+<a href="tag/Very-hard?lang=fr" title="Très difficile : Dernier niveau des challenges"><span class="difficulte difficulte1 " style="height: 0.2rem;"></span><span class="difficulte difficulte2 " style="height: 0.4rem;"></span><span class="difficulte difficulte3 " style="height: 0.6rem;"></span><span class="difficulte difficulte4 " style="height: 0.8rem;"></span><span class="difficulte difficulte36   difficulte36a" style="height: 1rem;"></span></a>
+</td>
+<td class="show-for-large-up">
+<a class="txt_5pre" title="profil de Cryptanalyse" href="/Cryptanalyse?lang=fr">Cryptanalyse</a>
+</td>
+<td class="show-for-medium-up"><img src="squelettes/img/note/note4.svg?1640086082" alt="" width="16" height="16" class="note_smiley"></td>
+<td class="show-for-large-up">3</td>
+<td class="show-for-large-up">17 juillet 2019</td>
+</tr>
+</tbody>
+</table>
+</div><!--ajaxbloc-->                
+</div>
+</div>
+</div>
+</div><!--ajaxbloc-->    
+<div class="ajaxbloc bind-ajaxReload" data-ajax-env="gkgDd8YU53CkfW24+4noN9/nhkJ1G+9ntnG4FCNS4Jqq6Cmwyq7KglaKF/3bTiY2rDHAID0LUe/SSLVnKpZcEfHLoXkR3FvXGjUuk9TCBgqgEeR2nQKt4w7B6gPuKHPeyMz8CWbDlzdtdDJiEWKdmN8LOhJUx4HoUhtmLwn9Ca/BbAisHdECmimzgVZ6y9VuKL9FM3eehBAdBtHYeZLJkprK+4mHzYnpz3Jc6lEOvwLQyAe8nvIPn/vIsTHMXdvVvDU+EOOibTboMP6CGNamlB+bevtOfYcUY+Twp0XsmEJm486Vl/YCuWvcQruWNV/CMlcB2l1ZJnpBZfPxJ2sCcvGlpTo=" data-origin="/fr/Challenges/Cracking/">
+<div class="small-12 columns">
+<div class="tile">
+<div class="t-body tb-padding">
+<a id="pagination_dernieres_validations" class="pagination_ancre"></a>
+<h1><img src="squelettes/img/valid.svg" alt="Résultats des challenges" class="vmiddle" width="48" height="48">&nbsp;Résultats des challenges</h1>
+<div class="box">
+<table class="text-center mauto" style="width: 100%;">
+<thead>
+<tr class="row_first">
+<td style="width: 20%;">Pseudonyme</td>
+<td style="width: 35%;">Epreuve</td>
+<td class="hide-for-small-only" style="width: 10%;">Langue</td>
+<td class="hide-for-small-only" style="width: 30%;">Date</td>
+</tr>
+</thead>
+<tbody>
+<tr class="row_even">
+<td><a class=" txt_6forum" title="profil de Gh05t1nB4ud" href="/Gh05t1nB4ud?lang=fr">Gh05t1nB4ud</a></td>
+<td>
+<a href="fr/Challenges/Cracking/" title="Cracking"><img src="IMG/logo/rubon69.svg?1637496508" alt="Cracking" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/Cracking/APK-Anti-debug" title="Jouons à cache-cache, challenge issu de Hashdays 2012">APK - Anti-debug</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;13:42</td>
+</tr>
+<tr class="row_odd">
+<td><a class=" txt_6forum" title="profil de Gh05t1nB4ud" href="/Gh05t1nB4ud?lang=fr">Gh05t1nB4ud</a></td>
+<td>
+<a href="fr/Challenges/Cracking/" title="Cracking"><img src="IMG/logo/rubon69.svg?1637496508" alt="Cracking" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/Cracking/APK-Flutter-Debug" title="Attention au mode de build">APK - Flutter Debug</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;13:37</td>
+</tr>
+<tr class="row_even">
+<td><a class=" txt_6forum" title="profil de N3cr0Sh3ll" href="/N3cr0Sh3ll?lang=fr">N3cr0Sh3ll</a></td>
+<td>
+<a href="en/Challenges/Cracking/" title="Cracking"><img src="IMG/logo/rubon69.svg?1637496508" alt="Cracking" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="en/Challenges/Cracking/ELF-x86-0-protection" title="First challenge of cracking, writen in C with vi and compiled with GCC32">ELF x86 - 0 protection</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/en.svg?1637569714" alt="en" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;13:33</td>
+</tr>
+<tr class="row_odd">
+<td><a class=" txt_6forum" title="profil de Nitorac" href="/Nitorac?lang=fr">Nitorac</a></td>
+<td>
+<a href="fr/Challenges/Cracking/" title="Cracking"><img src="IMG/logo/rubon69.svg?1637496508" alt="Cracking" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/Cracking/APK-Flutter-Debug" title="Attention au mode de build">APK - Flutter Debug</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;13:31</td>
+</tr>
+<tr class="row_even">
+<td><a class=" txt_6forum" title="profil de Nitorac" href="/Nitorac?lang=fr">Nitorac</a></td>
+<td>
+<a href="fr/Challenges/Cracking/" title="Cracking"><img src="IMG/logo/rubon69.svg?1637496508" alt="Cracking" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/Cracking/APK-Introduction" title="Petite entrée dans le monde d'Android...">APK - Introduction</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;13:18</td>
+</tr>
+<tr class="row_odd">
+<td><a class=" txt_6forum" title="profil de Edra" href="/Edra?lang=fr">Edra</a></td>
+<td>
+<a href="fr/Challenges/Cracking/" title="Cracking"><img src="IMG/logo/rubon69.svg?1637496508" alt="Cracking" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/Cracking/PE-x86-RunPE" title="Technique de packing Windows">PE x86 - RunPE</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;13:05</td>
+</tr>
+<tr class="row_even">
+<td><a class=" txt_6forum" title="profil de coldsweat" href="/coldsweat-1043503?lang=fr">coldsweat</a></td>
+<td>
+<a href="fr/Challenges/Cracking/" title="Cracking"><img src="IMG/logo/rubon69.svg?1637496508" alt="Cracking" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/Cracking/ELF-x86-Basique" title="Encore un exe à cracker, toujours compilé avec gcc32 sur x86">ELF x86 - Basique</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;12:57</td>
+</tr>
+<tr class="row_odd">
+<td><a class=" txt_6forum" title="profil de coldsweat" href="/coldsweat-1043503?lang=fr">coldsweat</a></td>
+<td>
+<a href="fr/Challenges/Cracking/" title="Cracking"><img src="IMG/logo/rubon69.svg?1637496508" alt="Cracking" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/Cracking/ELF-x86-0-protection" title="Premier challenge de cracking, programme rédigé en C avec vi et compilé avec GCC32.">ELF x86 - 0 protection</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;12:50</td>
+</tr>
+<tr class="row_even">
+<td><a class=" txt_6forum" title="profil de Gh05t1nB4ud" href="/Gh05t1nB4ud?lang=fr">Gh05t1nB4ud</a></td>
+<td>
+<a href="fr/Challenges/Cracking/" title="Cracking"><img src="IMG/logo/rubon69.svg?1637496508" alt="Cracking" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/Cracking/APK-Introduction" title="Petite entrée dans le monde d'Android...">APK - Introduction</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;11:54</td>
+</tr>
+<tr class="row_odd">
+<td><a class=" txt_6forum" title="profil de arthur_s" href="/arthur_s?lang=fr">arthur_s</a></td>
+<td>
+<a href="fr/Challenges/Cracking/" title="Cracking"><img src="IMG/logo/rubon69.svg?1637496508" alt="Cracking" width="16" height="16" class="vmiddle">&nbsp;</a>
+<a href="fr/Challenges/Cracking/APK-Introduction" title="Petite entrée dans le monde d'Android...">APK - Introduction</a>
+</td>
+<td class="hide-for-small-only"><img src="squelettes/img/pays/fr.svg?1594376628" alt="fr" width="16" height="16"></td>
+<td class="hide-for-small-only">17 octobre 2025&nbsp;to&nbsp;11:46</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pagination-centered">
+<ul class="pagination">
+<li class="current"><a href="/fr/Challenges/Cracking/?debut_dernieres_validations=0#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">0</a></li>
+<li><a href="/fr/Challenges/Cracking/?debut_dernieres_validations=10#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">10</a></li>
+<li><a href="/fr/Challenges/Cracking/?debut_dernieres_validations=20#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">20</a></li>
+<li><a href="/fr/Challenges/Cracking/?debut_dernieres_validations=30#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">30</a></li>
+<li><a href="/fr/Challenges/Cracking/?debut_dernieres_validations=40#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">40</a></li>
+<li><a href="/fr/Challenges/Cracking/?debut_dernieres_validations=50#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">50</a></li>
+<li><a href="/fr/Challenges/Cracking/?debut_dernieres_validations=60#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">60</a></li>
+<li><a href="/fr/Challenges/Cracking/?debut_dernieres_validations=70#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">70</a></li>
+<li><a href="/fr/Challenges/Cracking/?debut_dernieres_validations=80#pagination_dernieres_validations" class="lien_pagination gris bind-ajax" rel="nofollow">80</a></li>
+<li><a href="/fr/Challenges/Cracking/?debut_dernieres_validations=490#pagination_dernieres_validations" class="lien_pagination ajax bind-ajax" rel="nofollow">...</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div><!--ajaxbloc-->    
+</div><!--ajaxbloc-->                  

@@ -1,0 +1,109 @@
+# Environment files
+.env
+.env.local
+.env.production
+.env.development
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+hulbert_local.db
+hulbert_local.db.backup
+
+# Logs
+*.log
+logs/
+backend/logs/
+backend/backend/logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+dist/
+build/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# Angular
+dist/
+tmp/
+out-tsc/
+.angular/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.cursor/
+.agents/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backups
+backups/
+*.backup
+*.bak
+
+# SSL certificates
+ssl/
+*.pem
+*.key
+*.crt
+
+# Temporary files
+*.tmp
+*.temp
+
+# Docker
+.dockerignore
+
+# Test files
+test_*.py
+*_test.py
+coverage/
+.pytest_cache/
+htmlcov/
+
+# Archive and tools (to be removed)
+archive/
+tools/
+
+# Unused domains (to be removed)
+domains/economie/
+domains/entrepreneuriat/
+domains/finance/
+domains/politique/
+domains/sciences/
+
+# Duplicate backend folder
+backend/backend/
+backend/data/
+
+# Scripts to be replaced
+start-fixed.ps1
+start_backend.py
+test_dashboard_endpoints.py
+
+# Cache directories
+.cache/
+.parcel-cache/

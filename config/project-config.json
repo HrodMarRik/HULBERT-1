@@ -1,0 +1,64 @@
+{
+  "project": {
+    "name": "HULBERT-1",
+    "version": "2.0.0",
+    "description": "Écosystème de développement personnel multi-domaines",
+    "domains": [
+      "informatique",
+      "economie", 
+      "finance",
+      "entrepreneuriat",
+      "politique",
+      "sciences"
+    ]
+  },
+  "notion": {
+    "syncEnabled": true,
+    "syncInterval": 3600,
+    "workspaceId": "",
+    "configPath": "config/notion.env"
+  },
+  "agents": {
+    "autoStart": true,
+    "masterAgent": {
+      "enabled": true,
+      "port": 3000,
+      "logLevel": "info"
+    },
+    "notionSyncAgent": {
+      "enabled": true,
+      "interval": 3600,
+      "autoSync": true
+    },
+    "securityAgent": {
+      "enabled": true,
+      "monitorRootMe": true,
+      "challengePath": ".agents/context/challenges/"
+    },
+    "devAgent": {
+      "enabled": true,
+      "monitorProjects": true,
+      "autoDeploy": false
+    },
+    "learningAgent": {
+      "enabled": true,
+      "trackProgress": true,
+      "progressPath": ".agents/context/learning-progress.json"
+    }
+  },
+  "paths": {
+    "domains": "domains/",
+    "tools": "tools/",
+    "resources": "resources/",
+    "agents": ".agents/",
+    "config": "config/",
+    "docs": "docs/"
+  },
+  "features": {
+    "multiAgentSystem": true,
+    "notionSync": true,
+    "projectTracking": true,
+    "learningProgress": true,
+    "automation": true
+  }
+}
