@@ -1,0 +1,94 @@
+// Mixins for responsive design
+@mixin mobile {
+  @media (max-width: #{$mobile - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$mobile}) and (max-width: #{$tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+// Mixins for theme-specific styles
+@mixin dev-theme {
+  .dev-theme & {
+    @content;
+  }
+}
+
+@mixin gaming-theme {
+  .gaming-theme & {
+    @content;
+  }
+}
+
+// Mixins for common components
+@mixin card-style {
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+  transition: $transition;
+  
+  &:hover {
+    box-shadow: $shadow-hover;
+    transform: translateY(-5px);
+  }
+}
+
+@mixin button-style($bg-color, $text-color: white) {
+  background: $bg-color;
+  color: $text-color;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition;
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba($bg-color, 0.3);
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin input-style {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin gradient-bg($color1, $color2) {
+  background: linear-gradient(135deg, $color1, $color2);
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin grid-responsive($min-width: 300px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: 20px;
+}
