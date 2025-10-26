@@ -1,11 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://your-domain.com/api',
+  apiUrl: 'https://hrodmarrik.fr',
   appName: 'HULBERT-1',
-  version: '1.0.0',
-  enableLogging: false,
-  enableAnalytics: true,
-  cacheTimeout: 300000, // 5 minutes
-  maxRetries: 3,
-  retryDelay: 1000
+  version: '0.1.2'
 };

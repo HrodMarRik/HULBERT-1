@@ -4,8 +4,26 @@
 
 **Architecture séparée Frontend/Backend :**
 
-- **VPS Frontend** (51.210.6.15) : Angular + Nginx (ports 80, 443)
-- **VPS Backend** (51.178.24.242) : FastAPI + PostgreSQL + Redis (port 8000)
+- **VPS Frontend** (51.210.6.15) : Angular + Nginx sur **hulbert.fr** (ports 80, 443)
+- **VPS Backend** (51.178.24.242) : FastAPI + PostgreSQL + Redis + Nginx sur **hrodmarrik.fr** (ports 80, 443)
+
+## 🌐 Configuration DNS
+
+Avant de déployer, configurez vos enregistrements DNS :
+
+### Frontend (hulbert.fr)
+```
+Type A: hulbert.fr → 51.210.6.15
+Type A: www.hulbert.fr → 51.210.6.15
+```
+
+### Backend (hrodmarrik.fr)
+```
+Type A: hrodmarrik.fr → 51.178.24.242
+Type A: www.hrodmarrik.fr → 51.178.24.242
+```
+
+**Temps de propagation DNS** : 5 minutes à 48 heures (généralement 1-2 heures)
 
 ## 🔐 Configuration SSH
 
@@ -226,20 +244,29 @@ class Settings:
 
 ## 🌐 Variables d'Environnement
 
-### Frontend (.env.example)
+### Frontend (env.frontend.example)
 ```env
-# URL Backend
-VITE_API_URL=http://51.178.24.242:8000
+# Backend API URL
+BACKEND_API_URL=https://hrodmarrik.fr
+ENVIRONMENT=production
 ```
 
-### Backend (.env)
+### Backend (env.backend.example)
 ```env
+# Database
 POSTGRES_DB=hulbert_db
 POSTGRES_USER=hulbert
-POSTGRES_PASSWORD=changez_moi
-SECRET_KEY=changez_moi
-JWT_SECRET=changez_moi
-FRONTEND_URL=http://51.210.6.15
+POSTGRES_PASSWORD=changez_moi_production
+
+# Security
+SECRET_KEY=changez_moi_secret_key_production
+JWT_SECRET=changez_moi_jwt_secret_production
+
+# Frontend URL for CORS
+FRONTEND_URL=https://hulbert.fr
+
+# Environment
+ENVIRONMENT=production
 ```
 
 ## 🗄️ Structure des Fichiers
@@ -263,19 +290,19 @@ HULBERT-1/
 
 ### Test Frontend
 ```bash
-curl http://51.210.6.15
-curl http://51.210.6.15/health
+curl http://hulbert.fr
+curl http://hulbert.fr/health
+curl https://hulbert.fr  # Après configuration SSL
 ```
 
 ### Test Backend
 ```bash
-curl http://51.178.24.242:8000/api/health
+curl http://hrodmarrik.fr/api/health
+curl https://hrodmarrik.fr/api/health  # Après configuration SSL
 ```
 
-### Test API depuis Frontend
-```bash
-curl http://51.210.6.15/api/health
-```
+### Test CORS (depuis le navigateur)
+Ouvrir https://hulbert.fr et tester le login - les requêtes vers hrodmarrik.fr doivent fonctionner.
 
 ## 🔒 Configuration SSL (Optionnel)
 

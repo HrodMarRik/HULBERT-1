@@ -53,6 +53,10 @@ def create_app() -> FastAPI:
     app.add_middleware(
         CORSMiddleware,
         allow_origins=[
+            "https://hulbert.fr",
+            "https://www.hulbert.fr",
+            "http://hulbert.fr",
+            "http://www.hulbert.fr",
             "http://localhost:4200",  # Angular dev server
             "http://127.0.0.1:4200",  # Alternative localhost
             "http://localhost:3000",  # Alternative dev server

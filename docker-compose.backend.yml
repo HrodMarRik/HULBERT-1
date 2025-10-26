@@ -59,7 +59,7 @@ services:
       FEATURE_DOMAINS: "false"
       FEATURE_PORTFOLIO_MANAGEMENT: "false"
       # Frontend URL pour CORS
-      FRONTEND_URL: https://your-frontend-domain.com
+      FRONTEND_URL: https://hulbert.fr
     depends_on:
       postgres:
         condition: service_healthy
@@ -68,6 +68,26 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - backend-network
+
+  nginx-backend:
+    image: nginx:alpine
+    container_name: hulbert-nginx-backend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/backend.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/api/health"]
       interval: 30s
       timeout: 10s
       retries: 3
