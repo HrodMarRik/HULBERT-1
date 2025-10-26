@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: hulbert-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-hulbert_db}
+      POSTGRES_USER: ${POSTGRES_USER:-hulbert}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-hulbert}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: hulbert-redis
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - backend-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: hulbert-backend
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-hulbert}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-hulbert_db}
+      DATABASE_URL_ASYNC: postgresql+asyncpg://${POSTGRES_USER:-hulbert}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-hulbert_db}
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: ${SECRET_KEY}
+      JWT_SECRET: ${JWT_SECRET}
+      ENVIRONMENT: production
+      # Feature Flags - Modules désactivés pour optimisation
+      FEATURE_RSS_READER: "false"
+      FEATURE_EMAIL_CAMPAIGNS: "false"
+      FEATURE_EMAIL_SECURITY: "false"
+      FEATURE_PORTFOLIO_CMS: "false"
+      FEATURE_BUSINESS_PLAN: "false"
+      FEATURE_AGENTS: "false"
+      FEATURE_DIAGRAMS: "false"
+      FEATURE_CODE_LIBRARY: "false"
+      FEATURE_FILE_MANAGER: "false"
+      FEATURE_WISHLIST: "false"
+      FEATURE_DOMAINS: "false"
+      FEATURE_PORTFOLIO_MANAGEMENT: "false"
+      # Frontend URL pour CORS
+      FRONTEND_URL: https://your-frontend-domain.com
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - backend-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  backend-network:
+    name: hulbert-backend
+
