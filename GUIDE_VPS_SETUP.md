@@ -2,26 +2,70 @@
 
 ## Étape 1 : Sortir du Mode Rescue
 
-### Via l'Interface OVH
+### Option A : Via l'Interface OVH (RECOMMANDÉ)
 
 1. **Se connecter à votre espace OVH**
    - URL : https://www.ovh.com/manager/
    - Connexion avec vos identifiants OVH
 
 2. **Accéder à votre VPS**
-   - Menu : **Bare Metal Cloud** → **IPMI**
-   - Sélectionner votre VPS : `vps-d47edc07`
+   - Dans le tableau de bord, cliquez sur **Bare Metal Cloud** → **IP & VPS**
+   - Sélectionner votre VPS : `vps-d47edc07` ou `51.210.6.15`
 
-3. **Sortir du mode rescue**
-   - Dans l'interface IPMI, chercher le bouton **"Exit Rescue Mode"** ou **"Quitter le mode rescue"**
-   - Cliquer dessus
-   - Le VPS va redémarrer automatiquement
-
-4. **Réinstaller le système d'exploitation**
-   - Si vous n'avez pas d'OS installé, aller dans **Bare Metal Cloud** → **Installer/Réinstaller**
+3. **Réinstaller le système (plus simple)**
+   - Cliquer sur votre VPS
+   - Menu **Installer/Réinstaller** dans la barre latérale
    - Sélectionner : **Debian 12 - Docker**
-   - Configurer le mot de passe root : `motsdePASSE` (ou celui que vous voulez)
-   - Confirmer l'installation (environ 5-10 minutes)
+   - Mot de passe root : `motsdePASSE`
+   - **Confirmer** l'installation (environ 5-10 minutes)
+   - Une fois terminé, le VPS redémarrera automatiquement
+
+4. **Vérifier l'installation**
+   - Le VPS devrait être accessible en SSH dans les 10 minutes
+   - Si ça ne marche pas, répéter l'étape 3
+
+### Option B : Réinitialiser le mot de passe depuis le mode rescue (si réinstaller ne fonctionne pas)
+
+**Sur votre VPS actuellement en mode rescue :**
+
+```bash
+# 1. Identifier la partition principale
+fdisk -l
+
+# 2. Noter le nom de la partition principale (ex: /dev/sda1 ou /dev/nvme0n1p1)
+
+# 3. Créer le point de montage
+mkdir /mnt/root
+
+# 4. Monter la partition (remplacer par votre partition)
+mount /dev/sda1 /mnt/root  # ou /dev/nvme0n1p1
+
+# 5. Monter les systèmes de fichiers nécessaires
+mount --bind /dev /mnt/root/dev
+mount --bind /proc /mnt/root/proc
+mount --bind /sys /mnt/root/sys
+
+# 6. Entrer dans l'environnement chroot
+chroot /mnt/root
+
+# 7. Changer le mot de passe root
+passwd
+# Entrer le nouveau mot de passe : motsdePASSE
+# Confirmer : motsdePASSE
+
+# 8. Sortir du chroot
+exit
+
+# 9. Démontage propre
+umount /mnt/root/dev
+umount /mnt/root/proc
+umount /mnt/root/sys
+umount /mnt/root
+
+# 10. Retour à l'interface OVH
+# Aller dans IPMI/VNC → Boot → Normal
+# Redémarrer le VPS
+```
 
 ### Alternative : Via le gestionnaire VPS
 
